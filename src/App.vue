@@ -1,31 +1,44 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+	<div id="app">
+		<el-container>
+
+			<!-- 头部 -->
+			<el-header>
+				Header
+			</el-header>
+
+			<!-- 内容 -->
+			<el-main>
+				Main
+			</el-main>
+
+			<!-- 底部 -->
+			<el-footer class="footer">
+				<Footer />
+			</el-footer>
+		</el-container>
+	</div>
 </template>
 
+<script>
+	import {HTML5} from "@/assets/js/html5.js"
+	import Footer from "@/components/common/footer/Footer.vue"
+	
+	export default {
+		name: 'App',
+		components: {
+			Footer,
+		}
+	}
+</script>
+
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+	@import url("assets/css/reset.css");
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+	/* 尾部 */
+	.footer {
+		width: 100%;
+		background-color: #51565e;
+		min-height: 300px;
+	}
 </style>
