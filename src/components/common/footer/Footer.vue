@@ -4,28 +4,19 @@
 			<!-- 左部分 -->
 			<el-col :span="8">
 				<div class="grid-content grid-left">
-					
+
 					<el-divider content-position="center">
 						<p>常用链接</p>
 					</el-divider>
 					<div class="my-links">
-						
 						<div class="link-item item1">
-							<a target="_blank" :href="url" v-for="(url, name) in links1">{{name}}</a>
+							<a target="_blank" :href="url" v-for="(url, name) in links.link1">{{name}}</a>
 						</div>
 						<div class="link-item item2">
-							<a target="_blanke" href="">常用链接1</a>
-							<a target="_blanke" href="">常用链接2</a>
-							<a target="_blanke" href="">常用链接3</a>
-							<a target="_blanke" href="">常用链接4</a>
-							<a target="_blanke" href="">常用链接5</a>
+							<a target="_blank" :href="url" v-for="(url, name) in links.link2">{{name}}</a>
 						</div>
 						<div class="link-item item3">
-							<a target="_blanke" href="">常用链接1</a>
-							<a target="_blanke" href="">常用链接2</a>
-							<a target="_blanke" href="">常用链接3</a>
-							<a target="_blanke" href="">常用链接4</a>
-							<a target="_blanke" href="">常用链接5</a>
+							<a target="_blank" :href="url" v-for="(url, name) in links.link3">{{name}}</a>
 						</div>
 					</div>
 
@@ -60,33 +51,33 @@
 			<el-divider direction="vertical"></el-divider>
 
 			<!-- 右部分 -->
-			<el-col :span="8">	
+			<el-col :span="8">
 				<div>
 					<el-divider content-position="center">
 						<p>联系方式</p>
 					</el-divider>
 				</div>
 				<div class="grid-content grid-right">
-					
-					<div class="k-icon qq-icon">
-						<a href="javascript:void">
-							<img src="@/assets/img/footericon/qq.png" alt="">
-							<p>QQ</p>
-						</a>
-					</div>
+
 					<div class="k-icon github-icon">
 						<a href="https://github.com/kevinierson" target="_blank">
-							<img src="@/assets/img/footericon/github.png" alt="">
+							<img src="@/assets/img/footericon/github.png">
 							<p>GitHub</p>
 						</a>
 					</div>
-					<div class="k-icon wx-icon">
+					<div class="k-icon qq-icon">
 						<a href="javascript:void">
-							<img src="@/assets/img/footericon/wx.png" alt="">
+							<img src="@/assets/img/footericon/qq.png">
+							<p>QQ</p>
+						</a>
+					</div>
+					<div class="k-icon wx-icon">
+						<a href="javascript:void" slot="reference">
+							<img src="@/assets/img/footericon/wx.png">
 							<p>微信</p>
 						</a>
 					</div>
-					<div class="k-icon bilibli-icon">
+					<div class="k-icon bilibli-icon" >
 						<a href="https://www.bilibili.com/" target="_blank">
 							<img src="@/assets/img/footericon/bilibili.jpg" width="46px" style="border-radius: 100%;" alt="">
 							<p>bilibli</p>
@@ -103,12 +94,28 @@
 		name: 'Footer',
 		data() {
 			return {
-				links1:{
-					"牛客网":"https://www.nowcoder.com/",
-					"力扣网":"https://leetcode-cn.com/",
-					"语雀网":"https://www.yuque.com/dashboard",
-					"微信读书":"https://weread.qq.com/",
-					"CSDN社区":"https://www.csdn.net/"
+				links: {
+					link1: {
+						"简书": "https://www.jianshu.com/",
+						"牛客网": "https://www.nowcoder.com/",
+						"语雀网": "https://www.yuque.com/dashboard",
+						"微信读书": "https://weread.qq.com/",
+						"CSDN社区": "https://www.csdn.net/"
+					},
+					link2: {
+						"知乎": "https://www.zhihu.com/",
+						"力扣网": "https://leetcode-cn.com/",
+						"全历史": "https://www.allhistory.com/",
+						"开源软件": "https://gitee.com/explore",
+						"中国知网": "https://www.cnki.net/"
+					},
+					link3: {
+						"万花筒": "https://wht.im/",
+						"外刊杂志": "https://magazinelib.com/",
+						"scrimba": "https://scrimba.com/",
+						"腾讯视频": "https://v.qq.com/",
+						"天猫商城": "https://www.tmall.com/"
+					}
 				}
 			}
 		}
@@ -139,27 +146,21 @@
 	}
 
 	/* ----左部---- */
-	.grid-left a {
-		margin-top: 0.08rem;
-	}
+	.grid-left a {margin-top: 0.08rem;}
 	
-	.grid-left .item1{
-		margin-right: 0.2rem;
-	}
-	.grid-left .item3{
-		margin-left: 0.2rem;
-	}
-
-	.grid-left .my-links{
+	.grid-left .item1 {margin-right: 0.2rem;}
+	.grid-left .item3 {margin-left: 0.2rem;}
+	
+	.grid-left .my-links {
 		display: flex;
 		justify-content: center;
 	}
-	
-	.grid-left .link-item{
+
+	.grid-left .link-item {
 		display: flex;
 		flex-direction: column;
 	}
-	
+
 
 	/* ------ 中部 ------ */
 
@@ -178,7 +179,7 @@
 	}
 
 	/* ----右部----- */
-	
+
 	.grid-right {
 		display: flex;
 		flex-wrap: wrap;
@@ -188,5 +189,46 @@
 
 	.grid-right>.k-icon {
 		flex: 1;
+	}
+	
+	.wx-icon{
+		position: relative;
+	}
+	.wx-icon::before{
+		content: '';
+		position: absolute;
+		top: -133px;
+		left: -25px;
+		width: 135px;
+		height: 135px;
+		opacity: 0;
+	}
+	.wx-icon:hover:before{
+		opacity: 1;
+		background-image: url(../../../assets/img/footericon/wxcode.png);
+		background-position: center;
+		background-size: contain;
+		animation: fadeInDown; 
+		animation-duration: 1s;
+	}
+	.qq-icon{
+		position: relative;
+	}
+	.qq-icon::before{
+		content: '';
+		position: absolute;
+		top: -133px;
+		left: -15px;
+		width: 135px;
+		height: 135px;
+		opacity: 0;
+	}
+	.qq-icon:hover:before{
+		opacity: 1;
+		background-image: url(../../../assets/img/footericon/qqcode.png);
+		background-position: center;
+		background-size: contain;
+		animation: fadeInDown;
+		animation-duration: 1s;
 	}
 </style>
