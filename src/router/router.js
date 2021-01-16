@@ -2,17 +2,23 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const Home = () => import("@/components/content/home/MainPanel.vue")
+const Login = () => import("@/views/admin/login/Login.vue")
+const MainPanel = () => import("@/components/content/home/MainPanel.vue")
 
 Vue.use(Router)
 
 const routes = [
 	{
 		path: '/',
-		redirect: '/' //重定向到主页
+		redirect: '/home' //重定向到主页
 	},
 	{
 		path: '/home',
-		component: Home
+		component: MainPanel
+	},
+	{
+		path: '/tologin',
+		component: Login
 	}
 ]
 

@@ -133,7 +133,7 @@
 		justify-content: center;
 		align-items: center;
 		text-align: center;
-		font-size: 0.1rem;
+		font-size: 15px;
 	}
 
 	.grid-content a {
@@ -146,10 +146,10 @@
 	}
 
 	/* ----左部---- */
-	.grid-left a {margin-top: 0.08rem;}
+	.grid-left a {margin-top: 0.8em;}
 	
-	.grid-left .item1 {margin-right: 0.2rem;}
-	.grid-left .item3 {margin-left: 0.2rem;}
+	.grid-left .item1 {margin-right: 2em;}
+	.grid-left .item3 {margin-left: 2em;}
 	
 	.grid-left .my-links {
 		display: flex;
@@ -166,7 +166,7 @@
 
 	.grid-center>p {
 		color: #c8c3c3;
-		margin-top: 0.06rem;
+		margin-top: 0.6em;
 	}
 
 	.friend-link {
@@ -184,7 +184,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-		padding: 0.2rem;
+		padding: 2em;
 	}
 
 	.grid-right>.k-icon {

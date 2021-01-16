@@ -1,6 +1,17 @@
 <template>
 	<div>
-
+		<div class="HD-container">
+			<img src="../../../assets/img/headericon/mylogo.png" width="42px" alt="">
+			<div class="left-nav">
+				<a href="#" class="nav-item">首页</a>
+				<a href="#" class="nav-item">关于</a>
+				<a href="#" class="nav-item">帮助</a>
+				<a href="#" class="nav-item">反馈</a>
+			</div>
+			<div class="right-nav">
+				<router-link class="loginbtn" :to="{path:'/tologin'}">登录</router-link>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -16,5 +27,95 @@
 </script>
 
 <style>
+	.HD-container {
+		position: relative;
+		display: flex;
+		width: 100%;
+		height: 100%;
+		align-items: center;
+	}
 
+	.HD-container>img {
+		margin-left: 50px;
+	}
+
+	.left-nav {
+		margin-left: 3em;
+		height: 50px;
+		display: flex;
+	}
+
+	.left-nav .nav-item {
+		position: relative;
+		width: 5em;
+		height: 100%;
+		text-align: center;
+		line-height: 45px;
+		text-decoration: none;
+		color: #000;
+		font-size: 16px;
+		margin-left: 1em;
+	}
+
+	.left-nav .nav-item::before {
+		position: absolute;
+		content: '';
+		left: 0;
+		bottom: 0px;
+		width: 1px;
+		height: 30%;
+		background-color: #000000;
+		transition: 0.3s;
+	}
+
+	.left-nav .nav-item:hover:before {
+		height: 100%;
+	}
+
+	.left-nav .nav-item::after {
+		position: absolute;
+		content: '';
+		right: 0;
+		bottom: 0;
+		width: 1px;
+		height: 30%;
+		background-color: #000000;
+		transition: 0.3s;
+	}
+
+	.left-nav .nav-item:hover:after {
+		height: 100%;
+	}
+
+	.left-nav .nav-item:hover {
+		background-color: #f9f9f9;
+		text-shadow: 0px 1px 1px #000;
+	}
+
+	.right-nav {
+		position: absolute;
+		right: 0;
+		width: 10em;
+		height: 100%;
+		display: flex;
+		align-items: center;
+	}
+
+	.right-nav .loginbtn {
+		text-decoration: none;
+		background-color: #ffffff;
+		width: 5em;
+		height: 2.2em;
+		border: 0;
+		text-align: center;
+		line-height: 30px;
+		border-radius: 5px;
+		border: 2px solid #a2a2a2;
+		transition: 0.2s;
+		color: #000;
+	}
+
+	.right-nav .loginbtn:hover {
+		background-color: #f9f9f9;
+	}
 </style>

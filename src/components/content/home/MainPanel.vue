@@ -14,14 +14,14 @@
 							</div>
 							<div class="card-list-container">
 								<ul class="normal-card-list">
-									<li v-for="(tech, index) in techs" class="hover-action" :key="index">
+									<li v-for="(tech, index) in jdk.jdkList" class="hover-action" :key="index">
 										<a target="_blank" :href="tech.href">
 											<el-image v-if="tech.imgname != null" style="width: 120px; height: 88px" :src="require('../../../assets/img/main/jdkimg/'+ tech.imgname +'.jpg')"
 											 fit="cover"></el-image>
 											<div class="desc-container">
 												<h3>{{tech.name}}</h3>
 												<div class="divider"></div>
-												<p>{{tech.depict}}</p>
+												<p>{{tech.tdepict}}</p>
 											</div>
 										</a>
 									</li>
@@ -46,8 +46,7 @@
 		},
 		data() {
 			return {
-				jdks:[],
-				techs:[]
+				jdks:[]
 			}
 		},
 		created() {
@@ -86,8 +85,8 @@
 		padding: 25px 15px;
 		box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
 		background-color: rgba(182, 73, 0, 0.8);
-		width: 265px;
-		height: 315px;
+		width: 275px;
+		height: 320px;
 		line-height: 25px;
 		color: #fff;
 		user-select: none;
