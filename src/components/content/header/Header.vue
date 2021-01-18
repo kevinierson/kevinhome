@@ -3,13 +3,13 @@
 		<div class="HD-container">
 			<img src="../../../assets/img/headericon/mylogo.png" width="42px" alt="">
 			<div class="left-nav">
-				<a href="#" class="nav-item">首页</a>
-				<a href="#" class="nav-item">关于</a>
-				<a href="#" class="nav-item">帮助</a>
-				<a href="#" class="nav-item">反馈</a>
+				<router-link to="/home" class="nav-item">首页</router-link>
+				<router-link to="/about" class="nav-item">关于</router-link>
+				<router-link to="/help" class="nav-item">帮助</router-link>
+				<router-link to="/footback" class="nav-item">反馈</router-link>
 			</div>
 			<div class="right-nav">
-				<router-link class="loginbtn" :to="{path:'/tologin'}">登录</router-link>
+				<router-link class="loginbtn" to="/tologin">登录</router-link>
 			</div>
 		</div>
 	</div>
@@ -27,6 +27,11 @@
 </script>
 
 <style>
+	
+	.left-nav .active {
+		font-weight: bold;
+	}
+	
 	.HD-container {
 		position: relative;
 		display: flex;
@@ -52,9 +57,9 @@
 		text-align: center;
 		line-height: 45px;
 		text-decoration: none;
-		color: #000;
 		font-size: 16px;
 		margin-left: 1em;
+		color: #000000;
 	}
 
 	.left-nav .nav-item::before {
@@ -89,7 +94,7 @@
 
 	.left-nav .nav-item:hover {
 		background-color: #f9f9f9;
-		text-shadow: 0px 1px 1px #000;
+		font-weight: bold;
 	}
 
 	.right-nav {
@@ -112,7 +117,7 @@
 		border-radius: 5px;
 		border: 2px solid #a2a2a2;
 		transition: 0.2s;
-		color: #000;
+		color: #000000;
 	}
 
 	.right-nav .loginbtn:hover {

@@ -1,14 +1,20 @@
 //首页的请求
 import {request} from "./request.js"
 
-export function getJdksinfo(){
+export function getJavaInfo(){
 	return request({
-		url: '/front/jdks'
+		url: '/front/content/1'
 	})
 }
 
-export function getTechsinfo(){
+export function getTechsInfo(){
 	return request({
-		url: '/front/jdks'
+		url: '/front/techs'
 	})
 }
+export function getInfoById(id){
+	return request({
+		url: '/front/content/' + id
+	})
+}
+

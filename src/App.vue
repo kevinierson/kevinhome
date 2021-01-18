@@ -8,8 +8,7 @@
 
 			<!-- 内容 -->
 			<el-main style="padding: 0px;" class="main">
-				<router-view></router-view>
-				<div style="height: 20em;"></div>
+				<router-view ></router-view>
 			</el-main>
 
 			<!-- 底部 -->
@@ -26,8 +25,8 @@
 </template>
 
 <script>
-	import Header from "@/components/common/header/Header.vue"
-	import Footer from "@/components/common/footer/Footer.vue"
+	import Header from "@/components/content/header/Header.vue"
+	import Footer from "@/components/content/footer/Footer.vue"
 
 	export default {
 		name: 'App',
@@ -40,10 +39,7 @@
 
 <style>
 	@import url("assets/css/reset.css");
-	.main{
-		background-color: #9a9a9a;
-	}
-	
+
 	/* 尾部 */
 	.footer {
 		background-color: rgba(0, 0, 0, .6);

@@ -103,7 +103,7 @@
 						"CSDN社区": "https://www.csdn.net/"
 					},
 					link2: {
-						"知乎": "https://www.zhihu.com/",
+						"掘金": "https://juejin.cn/",
 						"力扣网": "https://leetcode-cn.com/",
 						"全历史": "https://www.allhistory.com/",
 						"开源软件": "https://gitee.com/explore",

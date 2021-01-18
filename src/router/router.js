@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const Home = () => import("@/components/content/home/MainPanel.vue")
+const Home = () => import("@/views/home/Home.vue")
 const Login = () => import("@/views/admin/login/Login.vue")
-const MainPanel = () => import("@/components/content/home/MainPanel.vue")
 
 Vue.use(Router)
 
@@ -14,7 +13,7 @@ const routes = [
 	},
 	{
 		path: '/home',
-		component: MainPanel
+		component: Home
 	},
 	{
 		path: '/tologin',
@@ -25,7 +24,8 @@ const routes = [
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+	linkActiveClass: 'active'
 })
 
 //多次点击跳转同一个路由是不被允许的，解决办法如下：
