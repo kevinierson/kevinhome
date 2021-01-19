@@ -1,21 +1,21 @@
 <template>
 	<div>
-		<div  class="card-preview">
+		<div class="about">
+		<h2 style="color: #000000;">hello</h2>
 			
 		</div>
 	</div>
 </template>
 
 <script>
-	export default {
-		name: "CardPreview",
-		
+	export default{
+		name: 'About'
 	}
 </script>
 
 <style>
-	.card-preview{
-		width: 100%;
+	.about{
 		height: 20em;
+		
 	}
 </style>

@@ -1,14 +1,14 @@
 <template>
 	<div>
-		<h2>Hello</h2>
+		<h2>hello</h2>
 	</div>
 </template>
 
 <script>
-	export default {
-		name: 'Login',
+	export default{
+		name: 'AdminContent',
 		data(){
-			return {
+			return{
 				
 			}
 		}
@@ -16,5 +16,4 @@
 </script>
 
 <style>
-	
 </style>

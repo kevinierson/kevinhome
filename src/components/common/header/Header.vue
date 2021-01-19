@@ -1,12 +1,12 @@
 <template>
 	<div>
 		<div class="HD-container">
-			<img src="../../../assets/img/headericon/mylogo.png" width="42px" alt="">
+			<img src="../../../assets/img/headericon/mylogo.png" width="42px">
 			<div class="left-nav">
 				<router-link to="/home" class="nav-item">首页</router-link>
-				<router-link to="/about" class="nav-item">关于</router-link>
-				<router-link to="/help" class="nav-item">帮助</router-link>
-				<router-link to="/footback" class="nav-item">反馈</router-link>
+				<router-link to="/home/about" class="nav-item">关于</router-link>
+				<router-link to="/home/help" class="nav-item">帮助</router-link>
+				<router-link to="/home/footback" class="nav-item">反馈</router-link>
 			</div>
 			<div class="right-nav">
 				<router-link class="loginbtn" to="/tologin">登录</router-link>
@@ -28,7 +28,7 @@
 
 <style>
 	
-	.left-nav .active {
+	.left-nav .router-link-exact-active {
 		font-weight: bold;
 	}
 	
@@ -38,6 +38,7 @@
 		width: 100%;
 		height: 100%;
 		align-items: center;
+		box-shadow: 0px 0px 8px 0px rgba(0,0,0,.5) ;
 	}
 
 	.HD-container>img {

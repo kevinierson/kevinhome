@@ -1,23 +1,52 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+/* 前台模块 */
 const Home = () => import("@/views/home/Home.vue")
-const Login = () => import("@/views/admin/login/Login.vue")
+const Main = () => import("@/components/content/main/Main.vue")
+const Login = () => import("@/views/admin/Login.vue")
+const About = () => import("@/components/content/main/about/About.vue")
+
+/* 后台模块 */
+const AdminHome = () => import("@/views/admin/home/AdminHome.vue")
+const AdminContent = () => import("@/components/content/admin/AdminContent.vue")
+const AdminTechs = () => import("@/components/content/admin/AdminTechs.vue")
+const AdminTech = () => import("@/components/content/admin/AdminTech.vue")
 
 Vue.use(Router)
 
 const routes = [
 	{
-		path: '/',
-		redirect: '/home' //重定向到主页
+		path: '/', redirect: '/home' //重定向到主页
 	},
 	{
 		path: '/home',
-		component: Home
+		component: Home,
+		children:[
+			{
+				path: '', component: Main
+			},
+			{
+				path: 'about', component: About
+			}
+		]
 	},
 	{
-		path: '/tologin',
-		component: Login
+		path: '/tologin',component: Login
+	},
+	{
+		path:'/admin', component: AdminHome,
+		children:[
+			{
+				path: 'content', component: AdminContent
+			},
+			{
+				path: 'techs', component: AdminTechs
+			},
+			{
+				path: 'tech/:id', component: AdminTech
+			}
+		]
 	}
 ]
 
