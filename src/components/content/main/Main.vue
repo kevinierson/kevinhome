@@ -4,25 +4,26 @@
 			<div class="card-container">
 				<div class="card-box">
 					<ul id="pic" class="version-box" ondragstart="return false" @mousedown="moveBox">
-						<li v-for="(tech_item, index) in techContent" class="version-item" :key="index">
+						<!-- 篇章 -->
+						<li v-for="(chapter, index) in chapters" class="version-item" :key="index">
 							<div class="version-desc">
-								<h2>{{tech_item.title}}</h2>
-								<h3>{{tech_item.title}}</h3>
-								<p>{{tech_item.pubdate + " " + tech_item.codename}}</p>
-								<p>{{tech_item.depict}}</p>
+								<h2>{{chapter.title}}</h2>
+								<h3>{{chapter.title}}</h3>
+								<p>{{chapter.pubdate + " " + chapter.codename}}</p>
+								<p>{{chapter.depict}}</p>
 								<a target="_blank" class="detail">详细介绍>></a>
 							</div>
 							<div class="card-list-container">
 								<ul class="normal-card-list">
-									<li v-for="(tech, index) in tech_item.contentList" class="hover-action" :key="index">
-										<!-- 详细技术 -->
-										<router-link target="_blank" onmouseup="return false;" to="/">
-											<el-image v-if="tech.image != null" style="width: 120px; height: 88px" :src="require('../../../assets/img/main/jdkimg/'+ tech.image +'.jpg')"
+									<li v-for="(content, index) in chapter.contentList" class="hover-action" :key="index">
+										<!-- 内容 -->
+										<router-link :to="'/home/detail/' + content.cid">
+											<el-image v-if="content.img_url != null" style="width: 120px; height: 88px" :src="content.img_url"
 											 fit="cover"></el-image>
 											<div class="desc-container">
-												<h3>{{tech.name}}</h3>
+												<h3>{{content.name}}</h3>
 												<div class="divider"></div>
-												<p>{{tech.c_depict}}</p>
+												<p>{{content.c_depict}}</p>
 											</div>
 										</router-link>
 									</li>
@@ -38,9 +39,9 @@
 				<div class="tech-container">
 					<ul class="tech-list">
 						<li class="tech-item" :class="{selected: isEquel(index)}" @click="changeActive(index, tech.id)" v-for="(tech, index) in techs">
-							<el-image :src="require('../../../assets/img/main/techicon/'+ tech.techname +'.png')"fit="contain"></el-image>
+							<el-image :src="tech.techimg_url" fit="contain"></el-image>
 							<span class="tech-name">{{tech.techname}}</span>
-						</li>
+						</li> 
 					</ul>
 				</div>
 			</div>
@@ -60,7 +61,7 @@
 	import {
 		getJavaInfo,
 		getTechsInfo,
-		getInfoById
+		getContentById
 	} from "@/network/home.js"
 	export default {
 		name: 'Home',
@@ -70,7 +71,7 @@
 		data() {
 			return {
 				techs:[],
-				techContent: [],
+				chapters: [],
 				leftMin: 0,
 				isSelected: false,
 				currentIndex: 0
@@ -83,8 +84,9 @@
 			changeActive(index, id){
 				$('.version-box').css('left',"0px")
 				this.currentIndex = index;
-				getInfoById(id).then( res => {
-					this.techContent = res
+				getContentById(id).then( res => {
+					this.chapters = res
+					console.log(res)
 				})
 			},
 			/* 实现可拖拽 */
@@ -124,7 +126,7 @@
 		},
 		created() {
 			getJavaInfo().then(res => {
-				this.techContent = res; //请求jdk信息
+				this.chapters = res; //首次请求获取Java信息
 			}),
 			getTechsInfo().then(res => {
 				this.techs = res//获取技术种类信息

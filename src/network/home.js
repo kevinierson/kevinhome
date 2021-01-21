@@ -12,9 +12,24 @@ export function getTechsInfo(){
 		url: '/front/techs'
 	})
 }
-export function getInfoById(id){
+
+export function getChapterById(id){
+	return request({
+		url: '/front/chapters/' + id
+	})
+}
+
+export function getContentById(id){
 	return request({
 		url: '/front/content/' + id
 	})
 }
+
+
+export function getContentsById(id){
+	return request({
+		url: '/front/contents/' + id
+	})
+}
+
 

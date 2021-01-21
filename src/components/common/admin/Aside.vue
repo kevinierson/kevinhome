@@ -16,7 +16,7 @@
 					<i class="el-icon-menu"></i>
 					<span slot="title">技术模块管理</span>
 				</el-menu-item>
-				<el-menu-item index="/admin/content">
+				<el-menu-item index="/admin/editor">
 					<i class="el-icon-menu"></i>
 					<span slot="title">内容管理</span>
 				</el-menu-item>

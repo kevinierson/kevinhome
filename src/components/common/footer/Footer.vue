@@ -113,7 +113,7 @@
 						"万花筒": "https://wht.im/",
 						"外刊杂志": "https://magazinelib.com/",
 						"scrimba": "https://scrimba.com/",
-						"腾讯视频": "https://v.qq.com/",
+						"腾讯体育": "https://sports.qq.com/nba/",
 						"天猫商城": "https://www.tmall.com/"
 					}
 				}

@@ -9,8 +9,10 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "axios": "^0.21.1",
+    "default-passive-events": "^2.0.0",
     "element-ui": "^2.14.1",
     "jquery": "^3.5.1",
+    "mavon-editor": "^2.9.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3"
   },
