@@ -3,33 +3,22 @@ import {request} from "./request.js"
 
 export function getJavaInfo(){
 	return request({
-		url: '/front/content/1'
+		url: '/front/content/1',
+		method:'get'
 	})
 }
 
 export function getTechsInfo(){
 	return request({
-		url: '/front/techs'
-	})
-}
-
-export function getChapterById(id){
-	return request({
-		url: '/front/chapters/' + id
+		url: '/front/techs',
+		method:'get'
 	})
 }
 
 export function getContentById(id){
 	return request({
-		url: '/front/content/' + id
+		url: '/front/content/' + id,
+		method:'get'
 	})
 }
-
-
-export function getContentsById(id){
-	return request({
-		url: '/front/contents/' + id
-	})
-}
-
 

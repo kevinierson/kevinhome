@@ -3,7 +3,7 @@
 		<div>
 			<el-button style="font-size: 14px;margin-top: 1em;" @click="dialogFormVisible = true" icon="el-icon-circle-plus-outline"
 			 size="small" type="success">添加技术</el-button>
-			<el-dialog title="添加技术" :visible.sync="dialogFormVisible">
+			<el-dialog title="技术管理" :visible.sync="dialogFormVisible">
 				<!-- 表单 -->
 				<el-form :model="form" label-suffix=":" :rules="rules" ref="form">
 					<el-form-item label="技术名称" prop="techname" :label-width="formLabelWidth">
@@ -27,6 +27,7 @@
 				</el-form>
 			</el-dialog>
 		</div>
+		
 		<!-- 技术列表 -->
 		<el-table :highlight-current-row="true" :stripe="true" :data="tableData.filter(data => !search || data.techname.toLowerCase().includes(search.toLowerCase()))"
 		 style="width: 100%">
@@ -40,7 +41,7 @@
 				</template>
 				<template slot-scope="scope">
 					<el-button size="mini" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-					<el-button size="mini" icon="el-icon-edit-outline" @click="handleChildEdit(scope.$index, scope.row.id)">编辑篇章</el-button>
+					<el-button size="mini" icon="el-icon-edit-outline" @click="toChildModel(scope.$index, scope.row.id)">篇章>></el-button>
 					<el-popconfirm style="padding-left: 10px;" @confirm="handleDelete(scope.row.id)" confirm-button-text='删除'
 					 cancel-button-text='点错了' icon="el-icon-info" icon-color="red" title="真的要删除吗？">
 						<el-button size="mini" slot="reference" icon="el-icon-delete" type="danger">删除</el-button>
@@ -55,7 +56,7 @@
 <script>
 	import {
 		getTechsInfo,
-		saveTech,
+		saveOrUpdateTech,
 		deleteTech
 	} from "@/network/admin.js"
 	export default {
@@ -91,7 +92,7 @@
 				this.form = row
 			},
 			/* 编辑子模块 */
-			handleChildEdit(index, id) {
+			toChildModel(index, id) {
 				this.$router.push("/admin/chapter/" + id)
 			},
 			/* 删除技术 */
@@ -126,7 +127,7 @@
 			submitForm(formName) {
 				this.$refs[formName].validate((valid) => {
 					if (valid) {
-						saveTech(this.form).then(res => {
+						saveOrUpdateTech(this.form).then(res => {
 							if (res.status) {
 								this.$message({
 									message: res.msg,
@@ -135,9 +136,9 @@
 							} else {
 								this.$message.error(res.msg);
 							}
-							this.getTech()
 							this.form = []
 							this.dialogFormVisible = false
+							this.getTech()
 							
 						})
 					} else {
