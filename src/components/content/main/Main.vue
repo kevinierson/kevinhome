@@ -17,7 +17,7 @@
 								<ul class="normal-card-list">
 									<li v-for="(content, index) in chapter.contentList" class="hover-action" :key="index">
 										<!-- 内容 -->
-										<router-link :to="'/home/detail/' + content.cid">
+										<router-link target="_blank" :to="'/home/detail/' + content.cid">
 											<el-image v-if="content.img_url != null" style="width: 120px; height: 88px" :src="content.img_url"
 											 fit="cover"></el-image>
 											<div class="desc-container">
@@ -47,14 +47,16 @@
 			</div>
 		</div>
 		<div>
-			<!-- 卡片展示 -->
+			<!-- 卡片列表1 -->
 			<CardPreview />
+			<VideoPreview />
 		</div>
 	</div>
 </template>
 
 <script>
 	import CardPreview from "./childComps/CardPreview.vue"
+	import VideoPreview from "./childComps/VideoPreview.vue"
 	import {
 		Jqmouse
 	} from "@/assets/js/jquery-mousewheel.js"
@@ -66,7 +68,8 @@
 	export default {
 		name: 'Home',
 		components: {
-			CardPreview
+			CardPreview,
+			VideoPreview
 		},
 		data() {
 			return {
@@ -86,7 +89,6 @@
 				this.currentIndex = index;
 				getContentById(id).then( res => {
 					this.chapters = res
-					console.log(res)
 				})
 			},
 			/* 实现可拖拽 */
@@ -133,7 +135,7 @@
 			})
 		},
 		mounted() {
-			$(".card-box").mousedown(function() {
+		/* 	$(".card-box").mousedown(function() {
 				$(".card-box").addClass("draging");
 			})
 			$(".card-box").mouseup(function() {
@@ -144,9 +146,9 @@
 			})
 			$('.card-box').mouseenter(function() {
 				$('body').css({"overflow-y": "hidden"})
-			})
+			}) */
 			/* 实现可滚动 */
-			$('.card-box').on('mousewheel', function(event) {
+			/* $('.card-box').on('mousewheel', function(event) {
 				if (event.deltaY == -1 && $('.version-box').position().left >= ($('.card-box').width() - $('.version-box').width())) {
 					var newLeft = $('.version-box').position().left - event.deltaX - 90 + "px";
 					$('.version-box').css("left", newLeft);
@@ -154,7 +156,7 @@
 					var newLeft = $('.version-box').position().left + event.deltaX + 90 + "px";
 					$('.version-box').css("left", newLeft);
 				}
-			});
+			}); */
 		}
 	}
 </script>
@@ -185,7 +187,7 @@
 		height: 100%;
 		margin-left: 1%;
 	}
-
+	
 	.tech-item {
 		position: relative;
 		display: flex;
@@ -236,7 +238,10 @@
 		left: 0;
 		cursor: move;
 	}
-
+	
+	.detail {
+		cursor: pointer;
+	}
 	.version-box .version-item {
 		padding: 20px;
 		display: flex;
@@ -256,6 +261,7 @@
 		color: #fff;
 		user-select: none;
 		/* 不能划选文字 */
+		
 	}
 
 	.version-item .version-desc h2 {
@@ -282,6 +288,11 @@
 		color: #fff;
 		transform: 0.5s;
 		margin-top: 0.3em;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 6;
+		-webkit-box-orient: vertical;
 	}
 
 	.version-desc a {
@@ -306,8 +317,7 @@
 	}
 
 	.card-list-container {
-		border-left: 1px solid rgba(255, 255, 255, 0.6);
-		background-color: rgba(0, 0, 0, 0.4);
+		background-color: rgba(0, 0, 0, 0.3);
 		position: relative;
 		height: 315px;
 	}
@@ -325,7 +335,6 @@
 
 	.card-list-container .hover-action {
 		display: inline-block;
-		background-color: #13150e;
 		width: 310px;
 		height: 90px;
 		position: relative;
@@ -367,6 +376,11 @@
 		padding: 4px;
 		font-size: 13px;
 		text-align: left;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
 	}
 
 

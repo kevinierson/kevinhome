@@ -9,7 +9,7 @@
 				<router-link to="/home/footback" class="nav-item">反馈</router-link>
 			</div>
 			<div class="right-nav">
-				<router-link class="loginbtn" to="/tologin">登录</router-link>
+				<router-link class="loginbtn" target="_blank" to="/tologin">登录</router-link>
 			</div>
 		</div>
 	</div>

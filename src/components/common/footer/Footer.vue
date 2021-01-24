@@ -37,7 +37,7 @@
 					</div>
 					<p>湘ICP备2020022354号-1</p>
 					<p>本网页部分图标来自：<a target="_blank" href="https://icons8.cn"> Icons8</a></p>
-					<p>&copy;2021 · Design & Development by Kevin.</p>
+					<p>&copy;2021-01 · Design & Development by Kevin.</p>
 					<el-divider content-position="center">
 						<p>友情链接</p>
 					</el-divider>

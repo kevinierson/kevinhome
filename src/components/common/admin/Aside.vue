@@ -9,7 +9,7 @@
 						<span>首页</span>
 					</template>
 					<el-menu-item-group>
-						<el-menu-item index="/admin">访问情况</el-menu-item>
+						<el-menu-item index="/admin"><i class="el-icon-data-line"></i>访问情况</el-menu-item>
 					</el-menu-item-group>
 				</el-submenu>
 				<el-menu-item index="/admin/techs">
@@ -17,8 +17,8 @@
 					<span slot="title">技术模块管理</span>
 				</el-menu-item>
 				<el-menu-item index="/admin/editor">
-					<i class="el-icon-menu"></i>
-					<span slot="title">内容管理</span>
+					<i class="el-icon-notebook-2"></i>
+					<span slot="title">文章管理</span>
 				</el-menu-item>
 				<el-menu-item index="/admin/x">
 					<i class="el-icon-setting"></i>

@@ -1,21 +1,21 @@
 <template>
 	<div>
-		<div class="cardDesc">
-			<div class="DescContainer">
-				<img src="../../../../assets/img/main/book.png" width="38px">
-				<h2>文章区</h2>
+		<div class="videoDesc">
+			<div class="VideoContainer">
+				<img src="../../../../assets/img/main/video.png" width="38px">
+				<h2>视频区</h2>
 			</div>
 		</div>
-		<div class="card-preview">
-			<ul class="card-list">
-				<a href="#" target="_blank" class="card" v-for="i in 5">
-					<div class="card-top">
-						<el-image style="width: 100%; height: 100%;border-radius:10px 10px 0 0;" src="http://127.0.0.1:8081/admin/file/944b94.jpg"
+		<div class="video-preview">
+			<ul class="video-list">
+				<a href="#" target="_blank" class="video" v-for="i in 5">
+					<div class="video-top">
+						<el-image style="width: 100%; height: 100%;border-radius:10px 10px 0 0;" src="http://127.0.0.1:8081/admin/file/15s4d2.jpg"
 						 fit="cover"></el-image>
 					</div>
-					<div class="card-bottom">
-						<h3>区块链是什么？</h3>
-						<p>区块链是一个信息技术领域的术语。从本质上讲，它是一个共享数据库，存储于其中的数据或信息，具有“不可伪造”“全程留痕”“可以追溯”“公开透明”“集体维护”等特征。</p>
+					<div class="video-bottom">
+						<h3>艾弗森高能集锦？</h3>
+						<p>来一场视觉盛宴</p>
 					</div>
 				</a>
 			</ul>
@@ -25,39 +25,38 @@
 
 <script>
 	export default {
-		name: "CardPreview",
-		data() {
+		name: 'VideoPreview',
+		data(){
 			return {
-				currentDate: new Date()
+				
 			}
 		}
 	}
 </script>
 
 <style>
-	.cardDesc{
+	.videoDesc{
 		position: relative;
-		background-color: #fff8f2;
+		background-color: #f0fff7;
 		color: #000000;
 		font-family: "华文楷体";
 		width: 100%;
 		height: 3em;
 	}
-	.DescContainer{
+	.VideoContainer{
 		position: absolute;
 		display: flex;
 		align-items: center;
 		left: 2em;
 		bottom: 0;
 	}
-	
-	.card-preview {
+	.video-preview {
 		position: relative;
 		width: 100%;
-		background-color: #fff8f2;
+		background-color: #f0fff7;
 	}
-
-	.card-preview .card-list {
+	
+	.video-preview .video-list {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -67,8 +66,8 @@
 		padding: 1em;
 		padding-top: 0.2em;
 	}
-
-	.card-preview .card-list .card {
+	
+	.video-preview .video-list .video {
 		position: relative;
 		width: 18em;
 		height: 20em;
@@ -80,21 +79,21 @@
 		transition: 0.2s;
 		box-shadow: 10px 5px 10px 2px rgba(0, 0, 0, .1);
 	}
-
-	.card-preview .card-list .card:hover {
+	
+	.video-preview .video-list .video:hover {
 		transform: scale(1.01);
 		box-shadow: 0 10px 10px 2px rgba(0, 0, 0, .1);
 	}
-
-	.card-preview .card-list .card-top {
+	
+	.video-preview .video-list .video-top {
 		position: absolute;
 		left: 0;
 		top: 0;
 		width: 100%;
 		height: 55%;
 	}
-
-	.card-preview .card-list .card-bottom {
+	
+	.video-preview .video-list .video-bottom {
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
@@ -107,12 +106,12 @@
 		background-color: #ffffff;
 		border-radius: 0 0 10px 10px;
 	}
-
-	.card-preview .card-list .card-bottom h3 {
+	
+	.video-preview .video-list .video-bottom h3 {
 		color: #000000;
 	}
-
-	.card-preview .card-list .card-bottom p {
+	
+	.video-preview .video-list .video-bottom p {
 		line-height: 19px;
 		/* 文字溢出部分消失显示省略号 */
 		overflow: hidden;
