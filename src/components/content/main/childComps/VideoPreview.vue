@@ -41,7 +41,7 @@
 		color: #000000;
 		font-family: "华文楷体";
 		width: 100%;
-		height: 3em;
+		height: 4em;
 	}
 	.VideoContainer{
 		position: absolute;

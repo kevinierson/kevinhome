@@ -14,6 +14,7 @@ const AdminContent = () => import("@/components/content/admin/AdminContent.vue")
 const AdminTechs = () => import("@/components/content/admin/AdminTechs.vue")
 const AdminChapter = () => import("@/components/content/admin/AdminChapter.vue")
 const AdminEditor = () => import("@/components/content/admin/ArticleEditor.vue")
+const AdminArticle = () => import("@/components/content/admin/AdminArticle.vue")
 
 Vue.use(Router)
 
@@ -71,8 +72,12 @@ const routes = [{
 					breadNumber: 3
 				}
 			}, {
-				path: 'editor',
+				path: 'editor',//详情编辑
 				component: AdminEditor
+			},
+			{
+				path: 'article',
+				component: AdminArticle
 			}
 		]
 	}

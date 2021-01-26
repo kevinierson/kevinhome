@@ -47,6 +47,7 @@
 			</div>
 		</div>
 		<div>
+			<Carousel />
 			<!-- 卡片列表1 -->
 			<CardPreview />
 			<VideoPreview />
@@ -57,6 +58,7 @@
 <script>
 	import CardPreview from "./childComps/CardPreview.vue"
 	import VideoPreview from "./childComps/VideoPreview.vue"
+	import Carousel from "./childComps/Carousel.vue"
 	import {
 		Jqmouse
 	} from "@/assets/js/jquery-mousewheel.js"
@@ -69,7 +71,8 @@
 		name: 'Home',
 		components: {
 			CardPreview,
-			VideoPreview
+			VideoPreview,
+			Carousel
 		},
 		data() {
 			return {

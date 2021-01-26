@@ -96,3 +96,27 @@ export function deleteContent(cid){
 		method: 'post'
 	})
 }
+
+//获取所有文章
+export function getAllArticle(){
+	return request({
+		url:'/front/articles',
+		method:'get'
+	})
+}
+
+
+//更新文章
+export function updateArticle(formData){
+	return request({
+		url: '/admin/updateArticle',
+		method: 'post',
+		data:{
+			id: formData.id,
+			title: formData.title,
+			depict: formData.depict,
+			cover: formData.cover,
+			href: formData.href
+		}
+	})
+}
