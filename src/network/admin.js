@@ -1,5 +1,17 @@
 import {request} from "./request.js"
 
+//登录
+export function login(formData){
+	return request({
+		url: '/user/login',
+		method: 'post',
+		data:{
+			email: formData.email,
+			password: formData.password
+		}
+	})
+}
+
 /* 获取技术列表 */
 export function getTechsInfo(){
 	return request({

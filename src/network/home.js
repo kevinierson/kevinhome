@@ -22,3 +22,9 @@ export function getContentById(id){
 	})
 }
 
+export function getArticleByCateId(cateId){
+	return request({
+		url: '/front/article/' + cateId,
+		method: 'get'
+	})
+}

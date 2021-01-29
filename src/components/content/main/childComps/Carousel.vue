@@ -3,8 +3,8 @@
 		<div class="carousel-left">
 			<div class="carousel-container">
 				<!-- 走马灯 -->
-				 <el-carousel height="280px">
-				      <el-carousel-item v-for="img in imgs" :key="item">
+				 <el-carousel height="280px" :interval="5500">
+				      <el-carousel-item v-for="(img, index) in imgs" :key="index">
 								<el-image
 											style="width: 100%;height: 100%;"
 								      :src="img"
@@ -23,11 +23,15 @@
 <script>
 	import img1 from "@/assets/img/main/login/bg.jpg"
 	import img2 from "@/assets/img/main/bg.jpg"
+	import img3 from "@/assets/img/main/dx.jpg"
+	import img4 from "@/assets/img/main/xm.jpeg"
+	import img5 from "@/assets/img/main/xm2.jpeg"
+	
 	export default {
 		name: 'Carousel',
 		data() {
 			return {
-				imgs:[img1, img2]
+				imgs:[img1, img2, img3, img4, img5]
 			}
 		}
 	}
@@ -48,11 +52,12 @@
 	}
 	
 	.carousel-left .carousel-container{
-		margin-left: 8rem;
 		padding: 1em;
 		width: 100%;
 		height: 100%;
 		z-index: 2;
+		box-shadow: 0 0 8px 2px rgba(0,0,0,.3);
+		background-color: #5b5b5b;
 	}
 	
 	.carousel-right{

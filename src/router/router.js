@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+Vue.use(Router)
 
 /* 前台模块 */
 const Home = () => import("@/views/home/Home.vue")
@@ -15,8 +16,6 @@ const AdminTechs = () => import("@/components/content/admin/AdminTechs.vue")
 const AdminChapter = () => import("@/components/content/admin/AdminChapter.vue")
 const AdminEditor = () => import("@/components/content/admin/ArticleEditor.vue")
 const AdminArticle = () => import("@/components/content/admin/AdminArticle.vue")
-
-Vue.use(Router)
 
 const routes = [{
 		path: '/',
@@ -41,11 +40,16 @@ const routes = [{
 	},
 	{
 		path: '/tologin',
+		name: 'Login',
 		component: Login
 	},
 	{
 		path: '/admin',
+		name: 'AdminHome',
 		component: AdminHome,
+		meta: {
+			requireAuth: true//需要验证
+		},
 		children: [{
 				path: 'techs',
 				component: AdminTechs,
@@ -71,13 +75,20 @@ const routes = [{
 					requireAuth: true,
 					breadNumber: 3
 				}
-			}, {
+			}, 
+			{
 				path: 'editor',//详情编辑
-				component: AdminEditor
+				component: AdminEditor,
+				meta: {
+					requireAuth: true
+				}
 			},
 			{
 				path: 'article',
-				component: AdminArticle
+				component: AdminArticle,
+				meta: {
+					requireAuth: true
+				}
 			}
 		]
 	}

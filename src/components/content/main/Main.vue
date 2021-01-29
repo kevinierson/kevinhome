@@ -2,8 +2,8 @@
 	<div>
 		<div class="timeline-container">
 			<div class="card-container">
-				<div class="card-box">
-					<ul id="pic" class="version-box" ondragstart="return false" @mousedown="moveBox">
+				<div class="card-box" >
+					<ul id="pic" v-scroll="handleScroll" class="version-box" ondragstart="return false" @mousedown="moveBox">
 						<!-- 篇章 -->
 						<li v-for="(chapter, index) in chapters" class="version-item" :key="index">
 							<div class="version-desc">
@@ -59,9 +59,7 @@
 	import CardPreview from "./childComps/CardPreview.vue"
 	import VideoPreview from "./childComps/VideoPreview.vue"
 	import Carousel from "./childComps/Carousel.vue"
-	import {
-		Jqmouse
-	} from "@/assets/js/jquery-mousewheel.js"
+	
 	import {
 		getJavaInfo,
 		getTechsInfo,
@@ -126,7 +124,8 @@
 					document.removeEventListener('mousemove', moveFun) // 取消监听事件，鼠标开始移动
 					document.removeEventListener('mouseup', stopFun) // 取消监听事件，鼠标停止移动
 				}
-
+			},
+			handleScroll: function(evt, el){
 			}
 		},
 		created() {
@@ -138,28 +137,7 @@
 			})
 		},
 		mounted() {
-		/* 	$(".card-box").mousedown(function() {
-				$(".card-box").addClass("draging");
-			})
-			$(".card-box").mouseup(function() {
-				$(".card-box").removeClass("draging");
-			})
-			$('.card-box').mouseleave(function() {
-				$('body').css({"overflow-y": "auto"})
-			})
-			$('.card-box').mouseenter(function() {
-				$('body').css({"overflow-y": "hidden"})
-			}) */
-			/* 实现可滚动 */
-			/* $('.card-box').on('mousewheel', function(event) {
-				if (event.deltaY == -1 && $('.version-box').position().left >= ($('.card-box').width() - $('.version-box').width())) {
-					var newLeft = $('.version-box').position().left - event.deltaX - 90 + "px";
-					$('.version-box').css("left", newLeft);
-				} else if (event.deltaY == 1 && $('.version-box').position().left <= -90) {
-					var newLeft = $('.version-box').position().left + event.deltaX + 90 + "px";
-					$('.version-box').css("left", newLeft);
-				}
-			}); */
+			
 		}
 	}
 </script>

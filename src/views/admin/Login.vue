@@ -1,71 +1,113 @@
 <template>
-	<div class="dowebok">
-		<div class="form sign-in">
-			<h2>欢迎回来</h2>
-			<label>
-				<span>邮箱</span>
-				<input type="email" />
-			</label>
-			<label>
-				<span>密码</span>
-				<input type="password" />
-			</label>
-			<p class="forgot-pass"><a href="javascript:">忘记密码？</a></p>
-			<button type="button" class="btns submit">登 录</button>
-		</div>
-		<div class="sub-cont">
-			<div class="img">
-				<div class="img__text m--up">
-					<h2>还未注册？</h2>
-					<p>赶快去注册！</p>
-				</div>
-				<div class="img__text m--in">
-					<h2>已有帐号？</h2>
-					<p>有帐号就登录吧，等你好久了！</p>
-				</div>
-				<div class="img__btn">
-					<span class="m--up">注 册</span>
-					<span class="m--in">登 录</span>
-				</div>
-			</div>
-			<div class="form sign-up">
-				<h2>立即注册</h2>
-				<label>
-					<span>用户名</span>
-					<input type="text" />
-				</label>
+	<div class="loginPanel">
+		<div class="dowebok">
+			<!-- 登录 -->
+			<el-form :model="loginForm" :rules="rules" ref="loginForm" class="form sign-in">
+				<h2>欢迎登录</h2>
 				<label>
 					<span>邮箱</span>
-					<input type="email" />
+					<input type="email" name="email" v-model="loginForm.email" required="required" />
 				</label>
 				<label>
 					<span>密码</span>
-					<input type="password" />
+					<input type="password" name="password" v-model="loginForm.password" required="required" />
 				</label>
-				<button type="button" class="btns submit">注 册</button>
-				<button type="button" class="btns fb-btn">使用 <span>facebook</span> 帐号注册</button>
+				<p class="forgot-pass"><a href="javascript:">忘记密码？</a></p>
+				<el-form-item>
+					<el-button @click="toLogin('loginForm')" class="btns submit">登 录</el-button>
+				</el-form-item>
+			</el-form>
+			<div class="sub-cont">
+				<div class="img">
+					<div class="img__text m--up">
+						<h2>还未注册？</h2>
+						<p>赶快去注册！</p>
+					</div>
+					<div class="img__text m--in">
+						<h2>已有帐号？</h2>
+						<p>有帐号就快去登录！</p>
+					</div>
+					<div class="img__btn">
+						<span class="m--up">注 册</span>
+						<span class="m--in">登 录</span>
+					</div>
+				</div>
+				<!-- 注册 -->
+				<div class="form sign-up">
+					<h2>立即注册</h2>
+					<label>
+						<span>用户名</span>
+						<input type="text" />
+					</label>
+					<label>
+						<span>邮箱</span>
+						<input type="email" />
+					</label>
+					<label>
+						<span>密码</span>
+						<input type="password" />
+					</label>
+					<button type="button" class="btns submit">注 册</button>
+					<!-- <button type="button" class="btns fb-btn">使用 <span>facebook</span> 帐号注册</button> -->
+				</div>
 			</div>
 		</div>
 	</div>
+
 </template>
 
 <script>
+	import {
+		login
+	} from "@/network/admin.js"
 	export default {
 		name: "Login",
 		data() {
 			return {
-				
+				responseResult: [],
+				loginForm: {
+					email: '',
+					password: ''
+				},
+				rules:{
+					email:[{
+						required: true,
+						message: '请输入邮箱',
+						trigger: 'blur'
+					}],
+					password:[{
+						required: true,
+						message: '请输入密码',
+						trigger: 'blur'
+					}]
+				}
 			}
 		},
-		methods:{
-			
+		methods: {
+			toLogin() {
+				if(!this.email){
+					this.$message.error("请输入邮箱");
+				}else{
+					login(this.loginForm).then(res => {
+						if (res.status) {
+							this.$store.commit('login', this.loginForm)
+							var path = this.$route.query.redirect
+							this.$router.replace({
+								path: path === '/' || path === undefined ? 'admin' : path
+							})
+						} else {
+							this.$message.error(res.msg)
+						}
+					})
+				}
+			}
 		},
 		mounted() {
 			document.querySelector('.img__btn').addEventListener('click', function() {
-			    document.querySelector('.dowebok').classList.toggle('s--signup')
+				document.querySelector('.dowebok').classList.toggle('s--signup')
 			})
 		}
-		
+
 	}
 </script>
 
@@ -78,9 +120,12 @@
 		padding: 0;
 	}
 
-	body {
-		font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-		background: #ededed;
+	.loginPanel {
+		width: 100%;
+		height: 100%;
+		background-image: url(../../assets/img/main/login/xmBG.jpg);
+		background-position: center;
+		background-size: cover;
 	}
 
 	input,
@@ -106,7 +151,6 @@
 		height: 550px;
 		margin: -300px 0 0 -450px;
 		background: #fff;
-		box-shadow: 0 0 10px 2px rgba(0,0,0,.2);
 	}
 
 	.form {
@@ -117,6 +161,7 @@
 		transition: transform 0.6s ease-in-out;
 		transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
 		padding: 50px 30px 0;
+		background: #fff;
 	}
 
 	.sub-cont {
@@ -138,7 +183,7 @@
 		transform: translate3d(-640px, 0, 0);
 	}
 
-	 .btns {
+	.btns {
 		display: block;
 		margin: 0 auto;
 		width: 260px;
@@ -283,8 +328,8 @@
 		transform: translateY(72px);
 	}
 
-	.sign-up h2 ,
-	.sign-in h2{
+	.sign-up h2,
+	.sign-in h2 {
 		margin-top: 2em;
 		width: 100%;
 		font-size: 26px;
@@ -323,16 +368,24 @@
 	}
 
 	.forgot-pass a {
-		color: #cfcfcf;
+		color: #767676;
+		text-decoration: none;
 	}
-
+.forgot-pass a:hover {
+		color: #d4af7a;
+	}
 	.submit {
 		margin-top: 40px;
 		margin-bottom: 20px;
 		background: #d4af7a;
 		text-transform: uppercase;
 	}
-
+	
+	.submit:hover{
+		background: #d4af7a;
+		color: #000000;
+	}
+	
 	.sign-in {
 		transition-timing-function: ease-out;
 	}

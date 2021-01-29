@@ -8,14 +8,14 @@
 		</div>
 		<div class="video-preview">
 			<ul class="video-list">
-				<a href="#" target="_blank" class="video" v-for="i in 5">
+				<a :href="video.href" target="_blank" class="video" v-for="video in videos">
 					<div class="video-top">
-						<el-image style="width: 100%; height: 100%;border-radius:10px 10px 0 0;" src="http://127.0.0.1:8081/admin/file/15s4d2.jpg"
+						<el-image style="width: 100%; height: 100%;border-radius:10px 10px 0 0;" :src="video.cover"
 						 fit="cover"></el-image>
 					</div>
-					<div class="video-bottom">
-						<h3>艾弗森高能集锦？</h3>
-						<p>来一场视觉盛宴</p>
+					<div class="video-bottom" :title="video.depict">
+						<h3>{{video.title}}</h3>
+						<p>{{video.depict}}</p>
 					</div>
 				</a>
 			</ul>
@@ -24,12 +24,19 @@
 </template>
 
 <script>
+	import {getArticleByCateId} from "@/network/home.js"
+	
 	export default {
 		name: 'VideoPreview',
 		data(){
 			return {
-				
+				videos:[]
 			}
+		},
+		created() {
+			getArticleByCateId(2).then(res => {
+				this.videos = res
+			})
 		}
 	}
 </script>
@@ -77,12 +84,12 @@
 		flex: 1;
 		border-radius: 10px;
 		transition: 0.2s;
-		box-shadow: 10px 5px 10px 2px rgba(0, 0, 0, .1);
+		box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .1);
 	}
 	
 	.video-preview .video-list .video:hover {
 		transform: scale(1.01);
-		box-shadow: 0 10px 10px 2px rgba(0, 0, 0, .1);
+		box-shadow: 0 0px 10px 2px rgba(0, 0, 0, .3);
 	}
 	
 	.video-preview .video-list .video-top {

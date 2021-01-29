@@ -8,14 +8,15 @@
 		</div>
 		<div class="card-preview">
 			<ul class="card-list">
-				<a href="#" target="_blank" class="card" v-for="i in 5">
+				<a :href="article.href" target="_blank" class="card" v-for="article in articles">
 					<div class="card-top">
-						<el-image style="width: 100%; height: 100%;border-radius:10px 10px 0 0;" src="http://127.0.0.1:8081/admin/file/944b94.jpg"
-						 fit="cover"></el-image>
+						<el-image style="width: 100%; height: 100%;border-radius:10px 10px 0 0;" :src="article.cover"
+						 fit="cover">
+						 </el-image>
 					</div>
-					<div class="card-bottom">
-						<h3>区块链是什么？</h3>
-						<p>区块链是一个信息技术领域的术语。从本质上讲，它是一个共享数据库，存储于其中的数据或信息，具有“不可伪造”“全程留痕”“可以追溯”“公开透明”“集体维护”等特征。</p>
+					<div class="card-bottom" :title="article.depict">
+						<h3>{{article.title}}</h3>
+						<p>{{article.depict}}</p>
 					</div>
 				</a>
 			</ul>
@@ -24,12 +25,19 @@
 </template>
 
 <script>
+	import {getArticleByCateId} from "@/network/home.js"
+	
 	export default {
 		name: "CardPreview",
 		data() {
 			return {
-				currentDate: new Date()
+				articles:[]
 			}
+		},
+		created() {
+			getArticleByCateId(1).then(res => {
+				this.articles = res;
+			})
 		}
 	}
 </script>
@@ -78,12 +86,12 @@
 		flex: 1;
 		border-radius: 10px;
 		transition: 0.2s;
-		box-shadow: 10px 5px 10px 2px rgba(0, 0, 0, .1);
+		box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .1);
 	}
 
 	.card-preview .card-list .card:hover {
 		transform: scale(1.01);
-		box-shadow: 0 10px 10px 2px rgba(0, 0, 0, .1);
+		box-shadow: 0 0px 10px 2px rgba(0, 0, 0, .3);
 	}
 
 	.card-preview .card-list .card-top {
