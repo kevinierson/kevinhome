@@ -3,7 +3,7 @@
 		<div class="carousel-left">
 			<div class="carousel-container">
 				<!-- 走马灯 -->
-				 <el-carousel height="280px" :interval="5500">
+				 <el-carousel height="310px" :interval="5500">
 				      <el-carousel-item v-for="(img, index) in imgs" :key="index">
 								<el-image
 											style="width: 100%;height: 100%;"
@@ -42,7 +42,7 @@
 		position: relative;
 		display: flex;
 		width: 100%;
-		height: 19.5em;
+		height: 21.5em;
 	}
 	
 	.carousel-left{

@@ -12,6 +12,21 @@ export function login(formData){
 	})
 }
 
+//退出
+export function logout(){
+	return request({
+		url: '/user/logout',
+		method: 'post'
+	})
+}
+
+export function toAuth(){
+	return request({
+		url: '/user/authentication',
+		method: 'get'
+	})
+}
+
 /* 获取技术列表 */
 export function getTechsInfo(){
 	return request({

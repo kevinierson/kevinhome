@@ -158,7 +158,6 @@
 			getContents() {
 				getContentsById(this.$route.params.id).then(res => {
 					this.tableData = res
-					console.log(res)
 				})
 			}
 		},

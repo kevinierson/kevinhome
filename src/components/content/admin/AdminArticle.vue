@@ -151,7 +151,6 @@
 			getArticles(){
 				getAllArticle().then(res => {
 					this.tableData = res
-					console.log(res)
 				})
 			}
 		},

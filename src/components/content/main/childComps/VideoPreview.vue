@@ -10,7 +10,7 @@
 			<ul class="video-list">
 				<a :href="video.href" target="_blank" class="video" v-for="video in videos">
 					<div class="video-top">
-						<el-image style="width: 100%; height: 100%;border-radius:10px 10px 0 0;" :src="video.cover"
+						<el-image class="cardImg" :src="video.cover"
 						 fit="cover"></el-image>
 					</div>
 					<div class="video-bottom" :title="video.depict">
@@ -85,11 +85,22 @@
 		border-radius: 10px;
 		transition: 0.2s;
 		box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .1);
+		overflow: hidden;
 	}
 	
-	.video-preview .video-list .video:hover {
-		transform: scale(1.01);
-		box-shadow: 0 0px 10px 2px rgba(0, 0, 0, .3);
+	.video-preview .video-list .cardImg {
+		transition: 0.3s;
+		width: 100%; 
+		height: 100%;
+		border-radius:10px 10px 0 0;
+	}
+	
+	.video-preview .video-list .video:hover .cardImg{
+		transform: scale(1.12);
+	}
+	
+	.video-preview .video-list .video:hover{
+		box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, .3);
 	}
 	
 	.video-preview .video-list .video-top {

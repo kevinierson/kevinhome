@@ -48,7 +48,7 @@ const routes = [{
 		name: 'AdminHome',
 		component: AdminHome,
 		meta: {
-			requireAuth: true//需要验证
+			requireAuth: true
 		},
 		children: [{
 				path: 'techs',
@@ -63,8 +63,8 @@ const routes = [{
 				component: AdminChapter,
 				name:'篇章',
 				meta: {
-					requireAuth: true,
-					breadNumber: 2
+					breadNumber: 2,
+					requireAuth: true
 				}
 			},
 			{
@@ -72,8 +72,8 @@ const routes = [{
 				component: AdminContent,
 				name: '内容',
 				meta: {
-					requireAuth: true,
-					breadNumber: 3
+					breadNumber: 3,
+					requireAuth: true
 				}
 			}, 
 			{

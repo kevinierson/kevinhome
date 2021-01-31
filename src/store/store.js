@@ -6,13 +6,17 @@ Vue.use(Vuex)//vuex状态管理
 export default new Vuex.Store({
 	state:{//用于存放全局参数
 		user:{
-			username: window.localStorage.getItem('user' || '[]') == null ? '' : JSON.parse(window.localStorage.getItem('user' || '[]')).username
+			email: window.sessionStorage.getItem('user' || '[]') == null ? '' : JSON.parse(window.sessionStorage.getItem('user' || '[]')).email
 		}
 	},
 	mutations: {
-		login(state, user){
+		Login(state, user){
 			state.user = user
-			window.localStorage.setItem('user', JSON.stringify(user))
+			window.sessionStorage.setItem('user', JSON.stringify(user))
+		},
+		logout(state){
+			state.user = []
+			window.sessionStorage.removeItem('user')
 		}
 	}
 })

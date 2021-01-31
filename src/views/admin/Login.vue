@@ -2,21 +2,19 @@
 	<div class="loginPanel">
 		<div class="dowebok">
 			<!-- 登录 -->
-			<el-form :model="loginForm" :rules="rules" ref="loginForm" class="form sign-in">
+			<div class="form sign-in">
 				<h2>欢迎登录</h2>
 				<label>
 					<span>邮箱</span>
-					<input type="email" name="email" v-model="loginForm.email" required="required" />
+					<input type="email" v-model="loginForm.email" required="required" />
 				</label>
 				<label>
 					<span>密码</span>
-					<input type="password" name="password" v-model="loginForm.password" required="required" />
+					<input type="password" v-model="loginForm.password" required="required" />
 				</label>
 				<p class="forgot-pass"><a href="javascript:">忘记密码？</a></p>
-				<el-form-item>
-					<el-button @click="toLogin('loginForm')" class="btns submit">登 录</el-button>
-				</el-form-item>
-			</el-form>
+				<button type="submit" @click="toLogin('loginForm')" class="btns submit">登 录</button>
+			</div>
 			<div class="sub-cont">
 				<div class="img">
 					<div class="img__text m--up">
@@ -68,32 +66,28 @@
 				loginForm: {
 					email: '',
 					password: ''
-				},
-				rules:{
-					email:[{
-						required: true,
-						message: '请输入邮箱',
-						trigger: 'blur'
-					}],
-					password:[{
-						required: true,
-						message: '请输入密码',
-						trigger: 'blur'
-					}]
 				}
 			}
 		},
 		methods: {
 			toLogin() {
-				if(!this.email){
-					this.$message.error("请输入邮箱");
-				}else{
+				let patterm = /[\w_]+@[a-zA-Z0-9]+(\.[A-Za-z]{2,4}){1,2}/
+				let _email = this.loginForm.email
+				let _password = this.loginForm.password
+				
+				if (_email.length == 0 ){
+					this.$message.error("请输入邮箱")
+				}else if(!patterm.test(_email)){
+					this.$message.error("邮箱格式错误")
+				}else if(_password.length == 0){
+					this.$message.error("请输入密码")
+				}else {
 					login(this.loginForm).then(res => {
 						if (res.status) {
-							this.$store.commit('login', this.loginForm)
-							var path = this.$route.query.redirect
+							this.$store.commit('Login', this.loginForm)
+							var _path = this.$route.query.redirect
 							this.$router.replace({
-								path: path === '/' || path === undefined ? 'admin' : path
+								path: _path === '/' || _path === undefined ? '/tologin' : _path
 							})
 						} else {
 							this.$message.error(res.msg)
@@ -107,7 +101,6 @@
 				document.querySelector('.dowebok').classList.toggle('s--signup')
 			})
 		}
-
 	}
 </script>
 
@@ -371,21 +364,23 @@
 		color: #767676;
 		text-decoration: none;
 	}
-.forgot-pass a:hover {
+
+	.forgot-pass a:hover {
 		color: #d4af7a;
 	}
+
 	.submit {
 		margin-top: 40px;
 		margin-bottom: 20px;
 		background: #d4af7a;
 		text-transform: uppercase;
 	}
-	
-	.submit:hover{
+
+	.submit:hover {
 		background: #d4af7a;
 		color: #000000;
 	}
-	
+
 	.sign-in {
 		transition-timing-function: ease-out;
 	}

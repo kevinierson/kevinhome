@@ -39,7 +39,7 @@
 				<div class="tech-container">
 					<ul class="tech-list">
 						<li class="tech-item" :class="{selected: isEquel(index)}" @click="changeActive(index, tech.id)" v-for="(tech, index) in techs">
-							<el-image :src="tech.techimg_url" fit="contain"></el-image>
+							<el-image class="tech-image" :src="tech.techimg_url" fit="contain"></el-image>
 							<span class="tech-name">{{tech.techname}}</span>
 						</li> 
 					</ul>
@@ -190,6 +190,7 @@
 		opacity: 1;
 		background-color: rgba(243, 243, 243, 0.3);
 	}
+	
 
 	/*----- 横向卡片---- */
 	.timeline-container {
@@ -324,6 +325,7 @@
 		writing-mode: horizontal-tb;
 		transition: background .3s;
 		cursor: pointer;
+		box-shadow: 0 0 5px 1px rgba(169, 227, 200, 0.6);
 	}
 
 	.card-list-container .hover-action .desc-container {

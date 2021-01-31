@@ -10,7 +10,7 @@
 			<ul class="card-list">
 				<a :href="article.href" target="_blank" class="card" v-for="article in articles">
 					<div class="card-top">
-						<el-image style="width: 100%; height: 100%;border-radius:10px 10px 0 0;" :src="article.cover"
+						<el-image class="cardImg" :src="article.cover"
 						 fit="cover">
 						 </el-image>
 					</div>
@@ -87,13 +87,23 @@
 		border-radius: 10px;
 		transition: 0.2s;
 		box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .1);
+		overflow: hidden;
 	}
-
-	.card-preview .card-list .card:hover {
-		transform: scale(1.01);
-		box-shadow: 0 0px 10px 2px rgba(0, 0, 0, .3);
+	.card-preview .card-list .cardImg{
+		transition: 0.3s;
+		width: 100%; 
+		height: 100%;
+		border-radius:10px 10px 0 0;
 	}
-
+	
+	.card-preview .card-list .card:hover .cardImg{
+		transform: scale(1.12);
+	}
+	
+	.card-preview .card-list .card:hover{
+		box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, .3);
+	}
+	
 	.card-preview .card-list .card-top {
 		position: absolute;
 		left: 0;

@@ -87,7 +87,6 @@
 		},
 		methods: {
 			handleEdit(index, row) {
-				console.log(row);
 				this.dialogFormVisible = true
 				this.form = row
 			},

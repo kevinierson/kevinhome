@@ -5,16 +5,27 @@
 		</div>
 		<div class="rightHeader">
 			<h2>kevinHome后台管理系统</h2>
-			<router-link to="/logout" class="logout">
+			<div @click="Logout()" class="logout">
 				<i class="el-icon-switch-button">退出</i>
-			</router-link>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+	import {logout} from "@/network/admin.js"
 	export default {
-		name: 'Header'
+		name: 'Header',
+		methods:{
+			Logout(){
+				logout().then(res => {
+					if(res.status){
+						this.$store.commit('logout')
+						this.$router.replace('/tologin')
+					}
+				})
+			}
+		}
 	}
 </script>
 
