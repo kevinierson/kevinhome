@@ -13,7 +13,7 @@
 					<el-form-item label="简要描述" :label-width="formLabelWidth" prop="c_depict">
 						<el-input v-model="form.c_depict" type="textarea"></el-input>
 					</el-form-item>
-					<el-form-item label="图片链接" prop="img_url" :label-width="formLabelWidth">
+					<el-form-item label="图片链接" :label-width="formLabelWidth" prop="img_url" >
 						<el-input v-model="form.img_url" autocomplete="off"></el-input>
 					</el-form-item>
 					<!-- 图片上传 -->
@@ -93,14 +93,15 @@
 			}
 		},
 		methods: {
+			toChildModel(index, id){
+				this.$router.push("/admin/detail/" + id);
+			},
 			handleEdit(index, row) {
-				console.log(row)
 				this.dialogFormVisible = true
 				this.form = row
 			},
 			/* 删除内容 */
 			handleDelete(index, cid) {
-				console.log(cid)
 				deleteContent(cid).then(res => {
 					if(res.status){
 						this.$message({

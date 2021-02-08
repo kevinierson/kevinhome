@@ -28,3 +28,11 @@ export function getArticleByCateId(cateId){
 		method: 'get'
 	})
 }
+
+//获取内容详情
+export function getDetailByCId(cid){
+	return request({
+		url: '/front/detail/' + cid,
+		method: 'get'
+	})
+}

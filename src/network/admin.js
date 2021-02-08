@@ -147,3 +147,24 @@ export function updateArticle(formData){
 		}
 	})
 }
+
+export function getDetailIdByCId(cid){
+	return request({
+		url: '/admin/getDetailId/' + cid,
+		method: 'get'
+	})
+}
+
+export function saveOrUpdateDetail(value, render, article){
+	return request({
+		url: '/admin/detail',
+		method: 'post',
+		data:{
+			id: article.id,
+			content_id: article.contentId,
+			title: article.title,
+			detail_content_md: value,
+			detail_content_html: render
+		}
+	})
+}

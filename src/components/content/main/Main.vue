@@ -325,7 +325,7 @@
 		writing-mode: horizontal-tb;
 		transition: background .3s;
 		cursor: pointer;
-		box-shadow: 0 0 5px 1px rgba(169, 227, 200, 0.6);
+		box-shadow: 0 0 5px 1px rgba(196, 222, 227, 0.4);
 	}
 
 	.card-list-container .hover-action .desc-container {

@@ -8,20 +8,18 @@ import 'element-ui/lib/theme-chalk/index.css'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import {toAuth} from "@/network/admin.js"
+import 'highlight.js/styles/night-owl.css' //代码样式
+import hljs from "highlight.js"
 
 Vue.use(animated)//css样式
 Vue.use(ElementUI) //使用Element UI
 Vue.use(mavonEditor)//编辑器
 Vue.config.productionTip = false
-Vue.directive('scroll',{
-	inserted: function (el, binding) {
-	    let f = function (evt) {
-	      if (binding.value(evt, el)) {
-	        window.removeEventListener('scroll', f)
-	      }
-	    }
-	    window.addEventListener('scroll', f)
-	  }
+Vue.directive('highlight',function (el) {
+    let blocks = el.querySelectorAll('pre code');
+        blocks.forEach((block)=>{
+        hljs.highlightBlock(block)
+    })
 })
 
 //使用钩子函数判断是否拦截

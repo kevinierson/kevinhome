@@ -6,7 +6,6 @@ Vue.use(Router)
 const Home = () => import("@/views/home/Home.vue")
 const Main = () => import("@/components/content/main/Main.vue")
 const Login = () => import("@/views/admin/Login.vue")
-const About = () => import("@/components/content/main/about/About.vue")
 const Detail = () => import("@/components/content/main/Detail.vue")
 
 /* 后台模块 */
@@ -14,7 +13,7 @@ const AdminHome = () => import("@/views/admin/home/AdminHome.vue")
 const AdminContent = () => import("@/components/content/admin/AdminContent.vue")
 const AdminTechs = () => import("@/components/content/admin/AdminTechs.vue")
 const AdminChapter = () => import("@/components/content/admin/AdminChapter.vue")
-const AdminEditor = () => import("@/components/content/admin/ArticleEditor.vue")
+const AdminDetail = () => import("@/components/content/admin/ArticleDetail.vue")
 const AdminArticle = () => import("@/components/content/admin/AdminArticle.vue")
 
 const routes = [{
@@ -27,10 +26,6 @@ const routes = [{
 		children: [{
 				path: '',
 				component: Main
-			},
-			{
-				path: 'about',
-				component: About
 			},
 			{
 				path: 'detail/:id',
@@ -77,8 +72,8 @@ const routes = [{
 				}
 			}, 
 			{
-				path: 'editor',//详情编辑
-				component: AdminEditor,
+				path: 'detail/:id',//详情编辑
+				component: AdminDetail,
 				meta: {
 					requireAuth: true
 				}
