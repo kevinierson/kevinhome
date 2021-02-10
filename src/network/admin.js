@@ -76,7 +76,6 @@ export function saveOrUpdateChapter(formData){
 			te_id: formData.te_id,
 			codename: formData.codename,
 			title: formData.title,
-			pubdate: formData.pubdate,
 			depict: formData.depict
 		}
 	})
@@ -148,23 +147,39 @@ export function updateArticle(formData){
 	})
 }
 
+//获取内容详情
 export function getDetailIdByCId(cid){
 	return request({
 		url: '/admin/getDetailId/' + cid,
 		method: 'get'
 	})
 }
-
+//保存或修改内容详情
 export function saveOrUpdateDetail(value, render, article){
 	return request({
 		url: '/admin/detail',
 		method: 'post',
 		data:{
 			id: article.id,
-			content_id: article.contentId,
+			content_id: article.content_id,
 			title: article.title,
 			detail_content_md: value,
 			detail_content_html: render
 		}
+	})
+}
+//获取图片
+export function getCovers(){
+	return request({
+		url: '/admin/getCovers',
+		method: 'get'
+	})
+}
+//删除图片
+export function delCover(imgName){
+	console.log(imgName)
+	return request({
+		url: '/admin/delCover/' + imgName,
+		method: 'post'
 	})
 }

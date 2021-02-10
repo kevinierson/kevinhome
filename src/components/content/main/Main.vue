@@ -3,7 +3,7 @@
 		<div class="timeline-container">
 			<div class="card-container">
 				<div class="card-box" >
-					<ul id="pic" v-scroll="handleScroll" class="version-box" ondragstart="return false" @mousedown="moveBox">
+					<ul id="pic"class="version-box" ondragstart="return false" @mousedown="moveBox">
 						<!-- 篇章 -->
 						<li v-for="(chapter, index) in chapters" class="version-item" :key="index">
 							<div class="version-desc">
@@ -20,7 +20,7 @@
 										<router-link target="_blank" :to="'/home/detail/' + content.cid">
 											<el-image v-if="content.img_url != null" style="width: 120px; height: 88px" :src="content.img_url"
 											 fit="cover"></el-image>
-											<div class="desc-container">
+											<div class="desc-container" :title="content.c_depict">
 												<h3>{{content.name}}</h3>
 												<div class="divider"></div>
 												<p>{{content.c_depict}}</p>
@@ -124,8 +124,6 @@
 					document.removeEventListener('mousemove', moveFun) // 取消监听事件，鼠标开始移动
 					document.removeEventListener('mouseup', stopFun) // 取消监听事件，鼠标停止移动
 				}
-			},
-			handleScroll: function(evt, el){
 			}
 		},
 		created() {
@@ -317,7 +315,7 @@
 
 	.card-list-container .hover-action {
 		display: inline-block;
-		width: 310px;
+		width: 315px;
 		height: 90px;
 		position: relative;
 		margin: 3px 12px 12px;
@@ -330,7 +328,7 @@
 
 	.card-list-container .hover-action .desc-container {
 		position: absolute;
-		width: 190px;
+		width: 195px;
 		display: inline-block;
 		height: 100%;
 		color: rgba(255, 255, 255);
@@ -356,13 +354,13 @@
 	}
 
 	.card-list-container .hover-action .desc-container p {
-		padding: 4px;
+		padding: 2px 2px 0px 4px;
 		font-size: 13px;
 		text-align: left;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		display: -webkit-box;
-		-webkit-line-clamp: 3;
+		-webkit-line-clamp: 4;
 		-webkit-box-orient: vertical;
 	}
 

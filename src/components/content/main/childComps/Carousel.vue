@@ -1,9 +1,11 @@
 <template>
 	<div class="carouselPanel">
 		<div class="carousel-left">
+			
+		</div>
+		<div class="carousel-center">
 			<div class="carousel-container">
-				<!-- 走马灯 -->
-				<el-carousel height="310px" :interval="5500">
+				<el-carousel height="310px" :interval="6000">
 					<el-carousel-item v-for="(img, index) in imgs" :key="index">
 						<el-image draggable="false" style="width: 100%;height: 100%;" :src="img" fit="cover">
 						</el-image>
@@ -18,11 +20,11 @@
 </template>
 
 <script>
-	import img1 from "@/assets/img/main/login/bg.jpg"
-	import img2 from "@/assets/img/main/bg.jpg"
-	import img3 from "@/assets/img/main/dx.jpg"
-	import img4 from "@/assets/img/main/xm.jpeg"
-	import img5 from "@/assets/img/main/xm2.jpeg"
+	import img1 from "@/assets/img/main/carousel/xm3.jpg"
+	import img2 from "@/assets/img/main/carousel/xm2.jpeg"
+	import img3 from "@/assets/img/main/carousel/xm.jpeg"
+	import img4 from "@/assets/img/main/carousel/dx.jpg"
+	import img5 from "@/assets/img/main/login/bg.jpg"
 
 	export default {
 		name: 'Carousel',
@@ -45,10 +47,16 @@
 	.carousel-left {
 		position: relative;
 		display: flex;
+		flex: 1;
+		background-color: lightyellow;
+	}
+
+	.carousel-center {
+		position: relative;
 		width: 50em;
 	}
 
-	.carousel-left .carousel-container {
+	.carousel-center .carousel-container {
 		padding: 1em;
 		width: 100%;
 		height: 100%;
@@ -56,6 +64,7 @@
 		box-shadow: 0 0 8px 2px rgba(0, 0, 0, .3);
 		background-color: #5b5b5b;
 	}
+
 
 	.carousel-right {
 		position: relative;

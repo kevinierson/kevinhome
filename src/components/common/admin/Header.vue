@@ -21,7 +21,7 @@
 				logout().then(res => {
 					if(res.status){
 						this.$store.commit('logout')
-						this.$router.replace('/tologin')
+						this.$router.replace('/login')
 					}
 				})
 			}
@@ -49,7 +49,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: #9abeaf;
+		background-color: #84baa5;
 		flex: 1;
 	}
 

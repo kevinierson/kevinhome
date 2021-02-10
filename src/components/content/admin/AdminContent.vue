@@ -16,13 +16,6 @@
 					<el-form-item label="图片链接" :label-width="formLabelWidth" prop="img_url" >
 						<el-input v-model="form.img_url" autocomplete="off"></el-input>
 					</el-form-item>
-					<!-- 图片上传 -->
-					<el-upload drag style="text-align: center;" class="upload-demo" :on-success="handleSuccess" action="http://localhost:8081/admin/covers"
-					 :before-upload="beforeAvatarUpload" :limit="1" multiple>
-						<i class="el-icon-upload"></i>
-						<div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-						<div class="el-upload__tip" slot="tip">只能上传jpg/png文件，建议256 x 144像素</div>
-					</el-upload>
 					<el-form-item style="text-align: right;">
 						<el-button @click="cancelForm('form')">取消</el-button>
 						<el-button type="primary" @click="submitForm('form')">提交</el-button>
@@ -35,7 +28,16 @@
 			<el-table-column align="center" width="110px" label="编号" prop="cid"></el-table-column>
 			<el-table-column align="center" width="110px" label="标题" prop="name"></el-table-column>
 			<el-table-column align="center" width="380px" show-overflow-tooltip label="描述" prop="c_depict"></el-table-column>
-			<el-table-column align="center" width="250px" show-overflow-tooltip label="图片链接" prop="img_url"></el-table-column>
+			<el-table-column align="center" width="250px" label="图片链接" prop="img_url">
+				<template slot-scope="scope">
+				        <el-popover trigger="hover" placement="top">
+				          <p>{{ scope.row.img_url }}</p>
+				          <div slot="reference" class="name-wrapper">
+				            <el-tag size="medium">{{ scope.row.img_url }}</el-tag>
+				          </div>
+				        </el-popover>
+				      </template>
+			</el-table-column>
 			<el-table-column align="right">
 				<template slot="header" slot-scope="scope">
 					<el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
@@ -136,20 +138,6 @@
 						return false;
 					}
 				});
-			},
-			/* 上传前的钩子 */
-			beforeAvatarUpload(file) {
-				const isLt = file.size / 1024 / 1024 < 0.1;
-				if (!isLt) {
-					this.$message.error('上传头像图片大小不能超过 100kb!');
-				}
-				return isLt;
-			},
-			/* 上传成功 */
-			handleSuccess(response) {
-				this.form.img_url = response
-				this.$emit('onUpload')
-				this.$message.success('上传成功')
 			},
 			/* 取消 */
 			cancelForm(formName) {

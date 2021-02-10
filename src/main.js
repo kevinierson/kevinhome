@@ -24,6 +24,7 @@ Vue.directive('highlight',function (el) {
 
 //使用钩子函数判断是否拦截
 router.beforeEach((to, from, next) => {
+	window.document.title = to.meta.title == undefined?'KevinHome':to.meta.title
 	if(to.meta.requireAuth){
 		if(store.state.user.email){
 			toAuth().then( res => {
@@ -32,7 +33,7 @@ router.beforeEach((to, from, next) => {
 			})
 		}else{
 			next({
-				path: 'tologin',
+				path: 'login',
 				query:{redirect: to.fullPath}
 			})
 		}

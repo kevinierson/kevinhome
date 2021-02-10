@@ -3,14 +3,14 @@
 		<div class="videoDesc">
 			<div class="VideoContainer">
 				<img src="../../../../assets/img/main/video.png" width="38px">
-				<h2>视频区</h2>
+				<h2>视频</h2>
 			</div>
 		</div>
 		<div class="video-preview">
 			<ul class="video-list">
 				<a :href="video.href" target="_blank" class="video" v-for="video in videos">
 					<div class="video-top">
-						<el-image class="cardImg" :src="video.cover"
+						<el-image v-if="video.cover != null" class="cardImg" :src="video.cover"
 						 fit="cover"></el-image>
 					</div>
 					<div class="video-bottom" :title="video.depict">
@@ -77,7 +77,7 @@
 	.video-preview .video-list .video {
 		position: relative;
 		width: 18em;
-		height: 20em;
+		height: 18em;
 		margin: 0.8em;
 		margin-top: 0;
 		cursor: pointer;
@@ -87,16 +87,35 @@
 		box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .1);
 		overflow: hidden;
 	}
-	
+	.video-preview .video-list .video:nth-child(5){
+		animation: fadeInTopLeft; 
+		animation-duration: 1.3s;
+	}
+	.video-preview .video-list .video:nth-child(4){
+		animation: fadeInTopLeft; 
+		animation-duration: 1.6s;
+	}
+	.video-preview .video-list .video:nth-child(3){
+		animation: fadeInTopLeft;
+		animation-duration: 1.9s; 
+	}
+	.video-preview .video-list .video:nth-child(2){
+		animation: fadeInTopLeft; 
+		animation-duration: 2.2s; 
+	}
+	.video-preview .video-list .video:nth-child(1){
+		animation: fadeInTopLeft; 
+		animation-duration: 2.5s;
+	}
 	.video-preview .video-list .cardImg {
-		transition: 0.3s;
+		transition: 0.6s;
 		width: 100%; 
 		height: 100%;
 		border-radius:10px 10px 0 0;
 	}
 	
 	.video-preview .video-list .video:hover .cardImg{
-		transform: scale(1.12);
+		transform: scale(1.1);
 	}
 	
 	.video-preview .video-list .video:hover{
@@ -116,7 +135,7 @@
 		flex-direction: column;
 		flex-wrap: wrap;
 		position: absolute;
-		padding: 0.6em;
+		padding: 6px 8px 0px 8px;
 		left: 0;
 		bottom: 0;
 		width: 100%;
@@ -135,10 +154,10 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		display: -webkit-box;
-		-webkit-line-clamp: 5;
+		-webkit-line-clamp: 4;
 		-webkit-box-orient: vertical;
 		margin-top: 0.5em;
-		color: #959595;
+		color: #737373;
 		font-size: 14px;
 	}
 </style>

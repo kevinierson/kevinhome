@@ -2,7 +2,7 @@
 	<div class="detailBG">
 		<el-card class="detailContent">
 			<div>
-				<span style="font-size: 20px"><strong>{{detail.title}}</strong></span>
+				<span style="font-size: 28px"><strong>{{detail.title}}</strong></span>
 				<el-divider content-position="left">{{detail.createtime}}</el-divider>
 				<div class="markdown-body">
 					<div v-html="detail.detail_content_html"></div>
@@ -30,7 +30,7 @@
 		},
 		mounted() {
 			$('img').hover(function() {
-				console.log('hello')
+				
 			})
 		}
 	}
@@ -82,5 +82,8 @@
 		height: 1.8em;
 		background-color: #e6e6e6;
 		cursor: pointer;
+	}
+	 .el-divider--horizontal{
+		background-color: #505050;
 	}
 </style>

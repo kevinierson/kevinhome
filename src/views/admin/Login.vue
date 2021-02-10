@@ -3,7 +3,7 @@
 		<div class="dowebok">
 			<!-- 登录 -->
 			<div class="form sign-in">
-				<h2>欢迎登录</h2>
+				<h2>管理员登录入口</h2>
 				<label>
 					<span>邮箱</span>
 					<input type="email" v-model="loginForm.email" required="required" />
@@ -19,7 +19,7 @@
 				<div class="img">
 					<div class="img__text m--up">
 						<h2>还未注册？</h2>
-						<p>赶快去注册！</p>
+						<p>注册只是摆设，没什么用</p>
 					</div>
 					<div class="img__text m--in">
 						<h2>已有帐号？</h2>
@@ -87,7 +87,7 @@
 							this.$store.commit('Login', this.loginForm)
 							var _path = this.$route.query.redirect
 							this.$router.replace({
-								path: _path === '/' || _path === undefined ? '/tologin' : _path
+								path: _path === '/' || _path === undefined ? '/admin' : _path
 							})
 						} else {
 							this.$message.error(res.msg)
@@ -116,7 +116,7 @@
 	.loginPanel {
 		width: 100%;
 		height: 100%;
-		background-image: url(../../assets/img/main/login/xmBG.jpg);
+		background-image: url(../../assets/img/main/login/bj.jpg);
 		background-position: center;
 		background-size: cover;
 	}
@@ -154,7 +154,7 @@
 		transition: transform 0.6s ease-in-out;
 		transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
 		padding: 50px 30px 0;
-		background: #fff;
+		background: #fdfdfd;
 	}
 
 	.sub-cont {

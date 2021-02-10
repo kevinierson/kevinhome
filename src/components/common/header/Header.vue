@@ -6,7 +6,7 @@
 				<router-link to="/home" class="nav-item">首页</router-link>
 			</div>
 			<div class="right-nav">
-				<router-link class="loginbtn" target="_blank" to="/admin">登录</router-link>
+				<router-link class="loginbtn" target="_blank" to="/login">登录</router-link>
 			</div>
 		</div>
 	</div>

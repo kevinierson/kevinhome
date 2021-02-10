@@ -18,7 +18,6 @@
       <mavon-editor
         v-model="article.detail_content_md"
 				:ishljs = "true"
-				:codeStyle="code_style"
         style="height: 100%;"
         ref=md
         @save="saveArticles"
@@ -36,7 +35,7 @@
       return {
         article: {
 					id: '',
-					contentId: this.$route.params.id,
+					content_id: '',
 					title: '',
 					detail_content_md: ''
 				}
@@ -74,6 +73,7 @@
 					}else{
 						this.article = []
 						this.article.id = -1;
+						this.article.content_id = this.$route.params.id;
 					}
 				})
 			}

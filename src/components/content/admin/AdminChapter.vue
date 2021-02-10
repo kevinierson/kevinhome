@@ -13,9 +13,6 @@
 					<el-form-item label="简短说明" :label-width="formLabelWidth" prop="codename">
 						<el-input v-model="form.codename" autocomplete="off"></el-input>
 					</el-form-item>
-					<el-form-item label="发布日期" :label-width="formLabelWidth" prop="pubdate">
-						<el-date-picker v-model="form.pubdate" type="date" placeholder="选择日期" style="width: 100%;"></el-date-picker>
-					</el-form-item>
 					<el-form-item label="篇章描述" :label-width="formLabelWidth" prop="depict">
 						<el-input v-model="form.depict" type="textarea"></el-input>
 					</el-form-item>
@@ -71,11 +68,6 @@
 						message: '请输入标题',
 						trigger: 'blur'
 					}],
-					pubdate: [{
-						required: true,
-						message: '请选择发布时间',
-						trigger: 'blur'
-					}],
 					depict: [{
 						required: true,
 						message: '请填写相关描述',
@@ -86,7 +78,6 @@
 					te_id:this.$route.params.id,/* 技术id */
 					title: '',
 					codename:'',
-					pubdate: '',
 					depict: ''
 				},
 				formLabelWidth: '85px'

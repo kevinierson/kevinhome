@@ -15,6 +15,7 @@ const AdminTechs = () => import("@/components/content/admin/AdminTechs.vue")
 const AdminChapter = () => import("@/components/content/admin/AdminChapter.vue")
 const AdminDetail = () => import("@/components/content/admin/ArticleDetail.vue")
 const AdminArticle = () => import("@/components/content/admin/AdminArticle.vue")
+const AdminImages = () => import("@/components/content/admin/AdminImages.vue")
 
 const routes = [{
 		path: '/',
@@ -25,41 +26,58 @@ const routes = [{
 		component: Home,
 		children: [{
 				path: '',
-				component: Main
+				component: Main,
+				meta: {
+					title: '首页',
+					keepAlive: true
+				}
 			},
 			{
 				path: 'detail/:id',
-				component: Detail
+				component: Detail,
+				meta: {
+					title: '详细内容',
+					keepAlive: true
+				}
 			}
 		]
 	},
 	{
-		path: '/tologin',
+		path: '/login',
 		name: 'Login',
-		component: Login
+		component: Login,
+		meta: {
+			title: '邮箱登录',
+			keepAlive: true
+		}
 	},
 	{
 		path: '/admin',
 		name: 'AdminHome',
 		component: AdminHome,
 		meta: {
-			requireAuth: true
+			requireAuth: true,
+			title: '后台管理',
+			keepAlive: true
 		},
 		children: [{
 				path: 'techs',
 				component: AdminTechs,
 				name: '技术',
 				meta: {
-					requireAuth: true
+					requireAuth: true,
+					title: '技术管理',
+					keepAlive: true
 				}
 			},
 			{
 				path: 'chapter/:id',
 				component: AdminChapter,
-				name:'篇章',
+				name: '篇章',
 				meta: {
-					breadNumber: 2,
-					requireAuth: true
+					requireAuth: true,
+					keepAlive: true,
+					title: '篇章管理'
 				}
 			},
 			{
@@ -67,23 +85,38 @@ const routes = [{
 				component: AdminContent,
 				name: '内容',
 				meta: {
-					breadNumber: 3,
-					requireAuth: true
+					requireAuth: true,
+					keepAlive: true,
+					title: '内容管理'
 				}
-			}, 
+			},
 			{
-				path: 'detail/:id',//详情编辑
+				path: 'detail/:id', //详情编辑
 				component: AdminDetail,
 				meta: {
-					requireAuth: true
+					requireAuth: true,
+					keepAlive: true,
+					title: '详情管理'
 				}
 			},
 			{
 				path: 'article',
 				component: AdminArticle,
 				meta: {
-					requireAuth: true
+					requireAuth: true,
+					keepAlive: true,
+					title: '文章管理'
 				}
+			},
+			{
+				path: 'images',
+				component: AdminImages,
+				meta: {
+					requireAuth: true,
+					keepAlive: true,
+					title: '图片管理'
+				}
+
 			}
 		]
 	}
