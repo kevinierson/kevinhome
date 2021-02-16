@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
+//错误页面
+const Error = () => import("../common/error/Error404.vue")
+
 /* 前台模块 */
 const Home = () => import("@/views/home/Home.vue")
 const Main = () => import("@/components/content/main/Main.vue")
@@ -17,7 +20,13 @@ const AdminDetail = () => import("@/components/content/admin/ArticleDetail.vue")
 const AdminArticle = () => import("@/components/content/admin/AdminArticle.vue")
 const AdminImages = () => import("@/components/content/admin/AdminImages.vue")
 
-const routes = [{
+const routes = [
+	{
+		path: '/error404',
+		name: 'ErrorPage',
+		component: Error
+	},
+	{
 		path: '/',
 		redirect: '/home' //重定向到主页
 	},
@@ -128,6 +137,7 @@ export default new Router({
 	routes,
 	linkActiveClass: 'active'
 })
+
 
 //多次点击跳转同一个路由是不被允许的，解决办法如下：
 //push 

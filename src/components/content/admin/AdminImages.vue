@@ -6,12 +6,12 @@
 			<el-table-column align="center" width="80" label="编号" prop="id"></el-table-column>
 			<el-table-column align="center" width="250" label="图片">
 				<template slot-scope="scope">
-					<img :src="'http://127.0.0.1:8081/admin/file/' + scope.row.url" style="height: 50px" />
+					<img :src="'http://www.kevinstudy.cn:8989/admin/file/' + scope.row.url" style="height: 50px" />
 				</template>
 			</el-table-column>
 			<el-table-column align="center" width="400" label="图片链接" prop="url">
 				<template slot-scope="scope">
-					<p>{{'http://127.0.0.1:8081/admin/file/' + scope.row.url}}</p>
+					<p>{{'http://www.kevinstudy.cn:8989/admin/file/' + scope.row.url}}</p>
 				</template>
 			</el-table-column>
 			<el-table-column align="right">

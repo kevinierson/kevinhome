@@ -3,18 +3,13 @@
 		<el-col class="aside-col">
 			<el-menu :default-active="activeIndex" class="el-menu-vertical-demo" @select="handleSelect" background-color="#545c64"
 			 text-color="#fff" active-text-color="#ffd04b">
-				<el-submenu index="1">
-					<template slot="title">
-						<i class="el-icon-s-home"></i>
-						<span>首页</span>
-					</template>
-					<el-menu-item-group>
-						<el-menu-item index="/admin"><i class="el-icon-data-line"></i>访问情况</el-menu-item>
-					</el-menu-item-group>
-				</el-submenu>
+				<el-menu-item index="/admin">
+					<i class="el-icon-data-line"></i>
+					<span slot="title">访问情况</span>
+				</el-menu-item>
 				<el-menu-item index="/admin/techs">
 					<i class="el-icon-menu"></i>
-					<span slot="title">技术模块管理</span>
+					<span slot="title">博客管理</span>
 				</el-menu-item>
 				<el-menu-item index="/admin/article">
 					<i class="el-icon-notebook-2"></i>

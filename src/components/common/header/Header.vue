@@ -3,10 +3,10 @@
 		<div class="HD-container">
 			<img src="../../../assets/img/headericon/mylogo.png" width="42px">
 			<div class="left-nav">
-				<router-link to="/home" class="nav-item">首页</router-link>
+				<router-link to="/home" class="nav-item"><i class="el-icon-s-home"></i>首页</router-link>
 			</div>
 			<div class="right-nav">
-				<router-link class="loginbtn" target="_blank" to="/login">登录</router-link>
+				<router-link class="loginbtn" target="_blank" to="/login"><i class="el-icon-user-solid"></i>登录</router-link>
 			</div>
 		</div>
 	</div>
@@ -24,30 +24,32 @@
 </script>
 
 <style>
-	
 	.left-nav .router-link-exact-active {
 		font-weight: bold;
 	}
-	
+
 	.HD-container {
 		position: relative;
 		display: flex;
 		width: 100%;
 		height: 100%;
 		align-items: center;
-		box-shadow: 0px 0px 8px 0px rgba(0,0,0,.5) ;
+		box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, .5);
 	}
 
 	.HD-container>img {
-		margin-left: 50px;
+		margin-left: 6em;
 	}
 
+	/* 左侧 */
 	.left-nav {
-		margin-left: 3em;
+		margin-left: 7em;
 		height: 50px;
 		display: flex;
 	}
 
+	/* 优化 */
+	.right-nav .loginbtn,
 	.left-nav .nav-item {
 		position: relative;
 		width: 5em;
@@ -58,67 +60,34 @@
 		font-size: 16px;
 		margin-left: 1em;
 		color: #000000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
-	.left-nav .nav-item::before {
+	.left-nav .nav-item::before,
+	.right-nav .loginbtn::before {
 		position: absolute;
 		content: '';
-		left: 0;
-		bottom: 0px;
-		width: 1px;
-		height: 30%;
-		background-color: #000000;
+		width: 90%;
+		height: 72%;
 		transition: 0.3s;
+		border: 2px solid #000000;
+		border-radius: 8px;
 	}
 
-	.left-nav .nav-item:hover:before {
-		height: 100%;
+	.left-nav .nav-item:hover:before,
+	.right-nav .loginbtn:hover:before {
+		box-shadow: 0 0 8px 2px rgba(0, 0, 0, .5);
 	}
 
-	.left-nav .nav-item::after {
-		position: absolute;
-		content: '';
-		right: 0;
-		bottom: 0;
-		width: 1px;
-		height: 30%;
-		background-color: #000000;
-		transition: 0.3s;
-	}
-
-	.left-nav .nav-item:hover:after {
-		height: 100%;
-	}
-
-	.left-nav .nav-item:hover {
-		background-color: #f9f9f9;
-		font-weight: bold;
-	}
-
+	/* 右侧 */
 	.right-nav {
 		position: absolute;
-		right: 0;
+		right: 6em;
 		width: 10em;
 		height: 100%;
 		display: flex;
 		align-items: center;
-	}
-
-	.right-nav .loginbtn {
-		text-decoration: none;
-		background-color: #ffffff;
-		width: 5em;
-		height: 2.2em;
-		border: 0;
-		text-align: center;
-		line-height: 30px;
-		border-radius: 5px;
-		border: 2px solid #a2a2a2;
-		transition: 0.2s;
-		color: #000000;
-	}
-
-	.right-nav .loginbtn:hover {
-		background-color: #f9f9f9;
 	}
 </style>

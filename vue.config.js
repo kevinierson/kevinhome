@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
 	configureWebpack: {
 		resolve: {
@@ -17,5 +18,4 @@ module.exports = {
 			})
 		]
 	}
-
 }

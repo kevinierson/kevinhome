@@ -4,7 +4,7 @@ axios.default.withCredentials = true
 
 export function request(config) {
 	const instance = axios.create({
-		baseURL: 'http://127.0.0.1:8081',
+		baseURL: 'http://www.kevinstudy.cn:8989/',
 		timeout: 5000
 	})
 	

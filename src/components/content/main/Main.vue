@@ -2,11 +2,11 @@
 	<div>
 		<div class="timeline-container">
 			<div class="card-container">
-				<div class="card-box" >
-					<ul id="pic"class="version-box" ondragstart="return false" @mousedown="moveBox">
+				<div class="card-box">
+					<ul id="pic" class="chapter-box" ondragstart="return false" @mousedown="moveBox">
 						<!-- 篇章 -->
-						<li v-for="(chapter, index) in chapters" class="version-item" :key="index">
-							<div class="version-desc">
+						<li v-for="(chapter, index) in chapters" class="chapter-item" :key="index">
+							<div class="chapter-desc">
 								<h2>{{chapter.title}}</h2>
 								<h3>{{chapter.title}}</h3>
 								<p>{{chapter.pubdate + " " + chapter.codename}}</p>
@@ -18,8 +18,7 @@
 									<li v-for="(content, index) in chapter.contentList" class="hover-action" :key="index">
 										<!-- 内容 -->
 										<router-link target="_blank" :to="'/home/detail/' + content.cid">
-											<el-image v-if="content.img_url != null" style="width: 120px; height: 88px" :src="content.img_url"
-											 fit="cover"></el-image>
+											<el-image v-if="content.img_url != null" style="width: 120px; height: 88px" :src="content.img_url" fit="cover"></el-image>
 											<div class="desc-container" :title="content.c_depict">
 												<h3>{{content.name}}</h3>
 												<div class="divider"></div>
@@ -41,7 +40,7 @@
 						<li class="tech-item" :class="{selected: isEquel(index)}" @click="changeActive(index, tech.id)" v-for="(tech, index) in techs">
 							<el-image class="tech-image" :src="tech.techimg_url" fit="contain"></el-image>
 							<span class="tech-name">{{tech.techname}}</span>
-						</li> 
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -59,7 +58,7 @@
 	import CardPreview from "./childComps/CardPreview.vue"
 	import VideoPreview from "./childComps/VideoPreview.vue"
 	import Carousel from "./childComps/Carousel.vue"
-	
+
 	import {
 		getJavaInfo,
 		getTechsInfo,
@@ -74,7 +73,7 @@
 		},
 		data() {
 			return {
-				techs:[],
+				techs: [],
 				chapters: [],
 				leftMin: 0,
 				isSelected: false,
@@ -82,13 +81,13 @@
 			}
 		},
 		methods: {
-			isEquel(index){
+			isEquel(index) {
 				return this.currentIndex == index
 			},
-			changeActive(index, id){
-				$('.version-box').css('left',"0px")
+			changeActive(index, id) {
+				$('.chapter-box').css('left', "0px")
 				this.currentIndex = index;
-				getContentById(id).then( res => {
+				getContentById(id).then(res => {
 					this.chapters = res
 				})
 			},
@@ -96,13 +95,13 @@
 			moveBox(e) {
 				let that = this
 				let moveBoxObj = document.getElementsByClassName('card-box')[0] //获取父容器
-				let moveLineObj = document.getElementsByClassName('version-box')[0] //获取子容器
-				let moveBoxObjMaxWidth = moveBoxObj.clientWidth // 得到点击时该version-box所在大容器的宽
-				let moveLineObjOffsetLeft = moveLineObj.offsetLeft // 得到点击时该version-box的左边距
+				let moveLineObj = document.getElementsByClassName('chapter-box')[0] //获取子容器
+				let moveBoxObjMaxWidth = moveBoxObj.clientWidth // 得到点击时该chapter-box所在大容器的宽
+				let moveLineObjOffsetLeft = moveLineObj.offsetLeft // 得到点击时该chapter-box的左边距
 				let moveStartX = e.clientX
 				let leftMax = 0 // 左边距最大值
 				that.leftMin = -100 - moveLineObj.clientWidth + moveBoxObjMaxWidth // 左边距最小值
-				
+
 				document.addEventListener('mousemove', moveFun)
 				document.addEventListener('mouseup', stopFun)
 
@@ -110,7 +109,7 @@
 					e.preventDefault()
 					let mouseMoveDistance = e.clientX - moveStartX // 鼠标滑动距离（正则是往右；负则是往左）
 					let styleLeft = moveLineObjOffsetLeft + mouseMoveDistance // 左边距 = 线条初始（左边距）位置 + 鼠标滑动的距离
-					if(moveLineObj.clientWidth >= 780){
+					if (moveLineObj.clientWidth >= 780) {
 						if (styleLeft <= that.leftMin) {
 							styleLeft = that.leftMin
 						} else if (styleLeft > leftMax) {
@@ -128,14 +127,14 @@
 		},
 		created() {
 			getJavaInfo().then(res => {
-				this.chapters = res; //首次请求获取Java信息
-			}),
-			getTechsInfo().then(res => {
-				this.techs = res//获取技术种类信息
-			})
+					this.chapters = res; //首次请求获取Java信息
+				}),
+				getTechsInfo().then(res => {
+					this.techs = res //获取技术种类信息
+				})
 		},
 		mounted() {
-			
+
 		}
 	}
 </script>
@@ -149,8 +148,9 @@
 		padding: 10px;
 		background: #3a3a3a;
 		min-height: 84px;
-		box-shadow: 0px -2px 11px 2px #797979;
+		box-shadow: 0px 0px 8px 2px #797979;
 		overflow-x: hidden;
+		color: #ececec;
 	}
 
 	.tech-container {
@@ -166,7 +166,7 @@
 		height: 100%;
 		margin-left: 1%;
 	}
-	
+
 	.tech-item {
 		position: relative;
 		display: flex;
@@ -179,16 +179,16 @@
 		border-radius: 8px;
 		cursor: pointer;
 		opacity: 0.6;
-		transition: 0.3s ;
+		transition: 0.3s;
 		user-select: none;
 	}
-	
+
 	.tech-item:hover,
-	.tech-list .tech-item.selected{
+	.tech-list .tech-item.selected {
 		opacity: 1;
 		background-color: rgba(243, 243, 243, 0.3);
 	}
-	
+
 
 	/*----- 横向卡片---- */
 	.timeline-container {
@@ -204,25 +204,26 @@
 		background-size: cover;
 	}
 
+
 	.card-box {
 		position: relative;
 		width: 100%;
 		height: 100%;
-		overflow-x: hidden;
 		overflow-y: hidden;
 	}
 
-	.version-box {
+	.chapter-box {
 		position: absolute;
 		display: -webkit-box;
 		left: 0;
 		cursor: move;
 	}
-	
+
 	.detail {
 		cursor: pointer;
 	}
-	.version-box .version-item {
+
+	.chapter-box .chapter-item {
 		padding: 20px;
 		display: flex;
 		justify-content: flex-start;
@@ -230,21 +231,20 @@
 		position: relative;
 	}
 
-	.version-item .version-desc {
+	.chapter-item .chapter-desc {
 		position: relative;
 		padding: 25px 15px;
 		box-shadow: 0 15px 45px rgba(0, 0, 0, .1);
 		background-color: rgba(182, 73, 0, 0.8);
 		width: 275px;
 		height: 320px;
-		line-height: 25px;
+		line-height: 23px;
 		color: #fff;
 		user-select: none;
 		/* 不能划选文字 */
-		
 	}
 
-	.version-item .version-desc h2 {
+	.chapter-item .chapter-desc h2 {
 		position: absolute;
 		top: 20px;
 		left: 8px;
@@ -255,14 +255,14 @@
 		transform: 0.5;
 	}
 
-	.version-item .version-desc h3 {
+	.chapter-item .chapter-desc h3 {
 		position: relative;
 		font-size: 1.5em;
 		z-index: 2;
 		transform: 0.5s;
 	}
 
-	.version-item .version-desc p {
+	.chapter-item .chapter-desc p {
 		position: relative;
 		z-index: 2;
 		color: #fff;
@@ -275,7 +275,7 @@
 		-webkit-box-orient: vertical;
 	}
 
-	.version-desc a {
+	.chapter-desc a {
 		text-decoration: none;
 		position: absolute;
 		left: 0;
@@ -292,7 +292,7 @@
 		transition: 0.3s;
 	}
 
-	.version-desc a:hover {
+	.chapter-desc a:hover {
 		background-color: rgba(235, 94, 0, 1.0);
 	}
 
@@ -371,4 +371,6 @@
 		width: 100%;
 		border-top: 1px solid rgba(236, 236, 236, 0.5);
 	}
+	
+	
 </style>

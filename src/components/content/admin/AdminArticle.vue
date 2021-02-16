@@ -18,7 +18,7 @@
 					</el-form-item>
 
 					<!-- 图片上传 -->
-					<el-upload drag style="text-align: center;" class="upload-demo" :on-success="handleSuccess" action="http://localhost:8081/admin/covers"
+					<el-upload drag style="text-align: center;" class="upload-demo" :on-success="handleSuccess" action="http://www.kevinstudy.cn:8989/admin/covers"
 					 :before-upload="beforeAvatarUpload" :limit="1" multiple>
 						<i class="el-icon-upload"></i>
 						<div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>

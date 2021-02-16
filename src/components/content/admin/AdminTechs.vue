@@ -14,7 +14,7 @@
 					</el-form-item>
 
 					<!-- 图片上传 -->
-					<el-upload drag style="text-align: center;" class="upload-demo" :on-success="handleSuccess" action="http://localhost:8081/admin/covers"
+					<el-upload drag style="text-align: center;" class="upload-demo" :on-success="handleSuccess" action="http://www.kevinstudy.cn:8989/admin/covers"
 					 :before-upload="beforeAvatarUpload" :limit="1" multiple>
 						<i class="el-icon-upload"></i>
 						<div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
@@ -34,7 +34,7 @@
 			<el-table-column align="center" width="110" label="编号" prop="id"></el-table-column>
 			<el-table-column align="center" width="110" label="名称" prop="techname"></el-table-column>
 			<el-table-column align="center" width="180" label="日期" prop="createtime"></el-table-column>
-			<el-table-column align="center" width="380" label="图片链接" prop="techimg_url"></el-table-column>
+			<el-table-column align="center" width="400" label="图片链接" prop="techimg_url"></el-table-column>
 			<el-table-column align="right">
 				<template slot="header" slot-scope="scope">
 					<el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
